@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 import i18next from "i18next";
+import StartSignUp from "./webDesk/Auth/StartSignUp";
 
 const Splash1 = lazy(() => import("./webDesk/Auth/SelectProfile"));
 
@@ -50,6 +51,7 @@ function App() {
             <ScrollToTopOnNavigation />
             <Routes>
               <Route path="/" element={<Splash1 />} />
+              <Route path="/Choose-Identity" element={<StartSignUp />} />
             </Routes>
           </RecoilRoot>
         </Suspense>
