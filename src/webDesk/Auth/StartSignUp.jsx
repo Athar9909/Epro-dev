@@ -21,7 +21,7 @@ const StartSignUp = () => {
   };
 
   const StepIndicator = ({ steps, currentStep }) => (
-    <div className="flex justify-center items-center gap-4 flex-wrap ">
+    <div className="flex justify-start items-center gap-4 flex-wrap ">
       {steps.map((step, index) => (
         <React.Fragment key={step.id}>
           <div className="flex flex-row items-center gap-2">
@@ -54,11 +54,11 @@ const StartSignUp = () => {
     <div className="min-h-screen bg-gray-100">
       <CommHead />
 
-      <div className="bg-[url(/resources/images/banner1.svg)] bg-no-repeat bg-cover px-4 py-8 h-[20vh] md:h-[35vh]"></div>
+      <div className="bg-[url(/resources/images/banner1.svg)] bg-no-repeat bg-cover px-4 py-8 h-[20vh] md:h-[45vh]"></div>
 
-      <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 md:h-[70vh] items-center">
+      <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 md:h-[90vh] items-center">
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg">
-          <div className="flex justify-between bg-[#F7F7F7]  rounded-t-xl  px-2 md:px-8 md:py-6 items-center">
+          <div className="flex justify-between bg-[#F7F7F7]  rounded-t-xl px-2 md:px-8 md:py-6 items-start flex-col sm:flex-row p-4 gap-2">
             <h1 className="text-xl md:text-2xl font-bold text-gray-800">
               Sign Up Process
             </h1>
