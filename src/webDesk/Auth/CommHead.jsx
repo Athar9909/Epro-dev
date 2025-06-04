@@ -12,10 +12,11 @@ const CommHead = () => {
             />
           </div>
           <div className="flex items-center space-x-4">
-            <div className=" text-sm bg-[#F2EFEA] flex gap-2 p-2 rounded-btn">
+            <div className=" text-sm bg-[#F2EFEA] flex gap-2 items-center p-2 rounded-btn px-4">
               <img
                 className="text-teal-500 font-bold text-xl"
-                src="resources/icons/eng-flag.png"
+                src="resources/icons/language.svg"
+                alt="language-logo"
               />
               <span>English</span>
             </div>

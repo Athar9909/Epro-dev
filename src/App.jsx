@@ -4,6 +4,9 @@ import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 import i18next from "i18next";
 import StartSignUp from "./webDesk/Auth/StartSignUp";
+import SignupForm from "./webDesk/Auth/SignupForm";
+import SignupSubscription from "./webDesk/Auth/SignupSubscription";
+import SignupSubscriptionView from "./webDesk/Auth/SignupSubscriptionView";
 
 const Splash1 = lazy(() => import("./webDesk/Auth/SelectProfile"));
 
@@ -52,6 +55,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Splash1 />} />
               <Route path="/Choose-Identity" element={<StartSignUp />} />
+              <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
+              <Route path="/Sign-Up/Subscription" element={<SignupSubscription />} />
+              <Route path="/Sign-Up/Subscription-view" element={<SignupSubscriptionView />} />
             </Routes>
           </RecoilRoot>
         </Suspense>
