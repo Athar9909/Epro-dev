@@ -141,7 +141,7 @@ const StepTwo = ({ type = "email", setCurrentStep }) => {
 
         <div className="flex space-x-4 mt-6">
           <Link
-            to={-1}
+            onClick={() => setCurrentStep((prev) => prev - 1)}
             className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-md text-center font-medium">
             Back
           </Link>

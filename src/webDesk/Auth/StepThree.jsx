@@ -133,7 +133,9 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
             </div>
 
             <div className="flex space-x-4">
-              <Link to={-1} className="custom-btn bg-[#F7F7F7] text-gray-800">
+              <Link
+                onClick={() => setCurrentStep((prev) => prev - 1)}
+                className="custom-btn bg-[#F7F7F7] text-gray-800">
                 Back
               </Link>
               <button

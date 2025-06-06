@@ -248,7 +248,7 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                 <button
-                  onClick={() => setCurrentStep(4)}
+                  onClick={() => setCurrentStep((prev) => prev - 1)}
                   className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition-colors">
                   Back
                 </button>

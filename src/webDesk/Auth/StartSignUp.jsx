@@ -10,7 +10,7 @@ import StepFour from "./StepFour";
 import StepFive from "./StepFive";
 
 const StartSignUp = () => {
-  const [currentStep, setCurrentStep] = useState(5);
+  const [currentStep, setCurrentStep] = useState(1);
   const steps = [
     { id: 1, title: "STEP 01", label: "Identity" },
     { id: 2, title: "STEP 02", label: "Email" },
