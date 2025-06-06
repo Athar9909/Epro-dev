@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import CommHead from "./commHead";
 import CommFoot from "./CommFoot";
 import CommNote from "./CommNote";
-// import { Check } from "react-feather";
+import { Check } from "lucide-react";
+import StepOne from "./StepOne";
+import StepTow from "./StepTwo";
+import StepThree from "./StepThree";
+import StepFour from "./StepFour";
+import StepFive from "./StepFive";
 
 const StartSignUp = () => {
-  const [selectedProfile, setSelectedProfile] = useState(null);
-  const [currentStep, setCurrentStep] = useState(1);
-  const [verifyType, setVerifyType] = useState("email");
+  const [currentStep, setCurrentStep] = useState(5);
   const steps = [
     { id: 1, title: "STEP 01", label: "Identity" },
     { id: 2, title: "STEP 02", label: "Email" },
     { id: 3, title: "STEP 03", label: "Verification" },
     { id: 4, title: "STEP 04", label: "Complete" },
+    { id: 5, title: "STEP 04", label: "Subscription" },
   ];
 
-  const handleProfileSelect = (type) => {
-    setSelectedProfile(type);
-    setVerifyType(type);
-  };
+  const [varHeight, setVarHeight] = useState("100vh");
 
   const StepIndicator = ({ steps, currentStep }) => (
     <div className="flex justify-start items-center gap-4 flex-wrap ">
@@ -50,13 +51,31 @@ const StartSignUp = () => {
     </div>
   );
 
+  const getDynamicHieght = () => {
+    switch (currentStep) {
+      case 1:
+        return "70vh";
+      case 2:
+        return "70vh";
+      case 3:
+        return "50vh";
+      case 4:
+        return "110vh";
+      case 5:
+        return varHeight;
+      default:
+        return "50dvh";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <CommHead />
-
-      <div className="bg-[url(/resources/images/banner1.svg)] bg-no-repeat bg-cover px-4 py-8 h-[20vh] md:h-[45vh]"></div>
-
-      <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 md:h-[90vh] items-center">
+      <div
+        className={`bg-[url(/resources/images/banner1.svg)] px-4 md:px-14 pt-2 pb-16 h-[25dvh] md:h-[35dvh]`}></div>
+      <div
+        className="relative -top-25 md:-top-45 sm:-top-35 px-4 items-center"
+        style={{ height: getDynamicHieght() }}>
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg">
           <div className="flex justify-between bg-[#F7F7F7]  rounded-t-xl px-2 md:px-8 md:py-6 items-start flex-col sm:flex-row p-4 gap-2">
             <h1 className="text-xl md:text-2xl font-bold text-gray-800">
@@ -64,77 +83,24 @@ const StartSignUp = () => {
             </h1>
             <StepIndicator steps={steps} currentStep={currentStep} />
           </div>
-          <div className="p-6 md:p-10 max-w-3xl mx-auto">
-            <div className="text-center mb-6 ">
-              <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                Confirm your identity
-              </h2>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Please choose the method you prefer to verify your identity.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center mt-8 ">
-              {[
-                {
-                  id: "email",
-                  label: "Continue With Email",
-                  icon1: "/resources/icons/emailId.svg",
-                  icon2: "/resources/icons/emailDis.svg",
-                },
-                {
-                  id: "phone",
-                  label: "Continue With Phone",
-                  icon1: "/resources/icons/PhoneId.svg",
-                  icon2: "/resources/icons/phoneDis.svg",
-                },
-                {
-                  id: "nafath",
-                  label: "Continue With Nafath",
-                  icon1: "/resources/icons/nicDis.svg",
-                  icon2: "/resources/icons/nicDis.svg",
-                },
-              ].map((opt) => (
-                <div>
-                  <div
-                    key={opt.id}
-                    onClick={() => handleProfileSelect(opt.id)}
-                    className={`border p-4 w-50 h-50 flex justify-center items-center mx-auto rounded-full cursor-pointer transition-all duration-300 hover:shadow-md ${
-                      selectedProfile === opt.id
-                        ? "border-[#009EB4] bg-[#009EB420]"
-                        : "border-gray-200 "
-                    }`}>
-                    <div className="flex items-center justify-center">
-                      <img
-                        src={verifyType === opt.id ? opt.icon1 : opt.icon2}
-                        alt={opt.label}
-                        className="w-20 h-20"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="font-normal text-gray-600 text-center  mt-2">
-                    {opt.label}
-                  </h3>
-                </div>
-              ))}
-            </div>
-
-            <CommNote
-              text={
-                "Verification of this required field is necessary to continue."
-              }
+          {/* "Choose-Identity" */}
+          {currentStep === 1 && <StepOne setCurrentStep={setCurrentStep} />}
+          {/* {"Select Verify Type"} */}
+          {currentStep === 2 && (
+            <StepTow type={"email"} setCurrentStep={setCurrentStep} />
+          )}
+          {/* {"Verification"} */}
+          {currentStep === 3 && (
+            <StepThree type={"email"} setCurrentStep={setCurrentStep} />
+          )}
+          {/* {"Register Form"} */}
+          {currentStep === 4 && <StepFour setCurrentStep={setCurrentStep} />}
+          {currentStep === 5 && (
+            <StepFive
+              setCurrentStep={setCurrentStep}
+              setVarHeight={setVarHeight}
             />
-
-            <div className="flex space-x-4">
-              <button className="flex-1 bg-[#F7F7F7] text-dark py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
-                Back
-              </button>
-
-              <button className="flex-1 bg-[#009EB4] text-white py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
-                Continue
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 

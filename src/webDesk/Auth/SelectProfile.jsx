@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CommHead from "./commHead";
 import CommFoot from "./CommFoot";
 import CommNote from "./CommNote";
+import { Link } from "react-router-dom";
 
 const SelectProfile = () => {
   const [selectedProfile, setSelectedProfile] = useState(null);
@@ -22,7 +23,7 @@ const SelectProfile = () => {
       </div>
 
       {/* Profile Selection Card */}
-      <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 md:h-[70vh]">
+      <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 md:h-[60vh]">
         <div className="max-w-[50%] mx-auto bg-white rounded-container shadow-lg p-6 sm:px-16 sm:py-10">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -102,28 +103,31 @@ const SelectProfile = () => {
           </div>
 
           {/* Info Note */}
-          <CommNote text={"You can add your company details from your profile"}/>
+          <CommNote
+            text={"You can add your company details from your profile"}
+          />
 
           {/* Action Buttons */}
           <div className="flex space-x-4">
-            <button className="flex-1 bg-[#009EB4] text-white py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
+            <button className="custom-btn bg-[#009EB4] text-white">
               Continue as Guest
             </button>
-            <button
-              className={`flex-1 py-3 px-6 rounded-btn font-medium transition-colors ${
+            <Link
+              to={"/Choose-Identity"}
+              className={`custom-btn bg-[#F4C63B] ${
                 selectedProfile
-                  ? "bg-gray-900 text-white hover:bg-gray-800"
+                  ? "bg-[#F4C63B] text-white hover:bg-gray-800"
                   : "bg-gray-200 text-gray-500 cursor-not-allowed"
               }`}
               disabled={!selectedProfile}>
               Next Step
-            </button>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <CommFoot/>
+      <CommFoot />
     </div>
   );
 };
