@@ -8,6 +8,8 @@ import SignupForm from "./webDesk/Auth/SignupForm";
 import SignupSubscription from "./webDesk/Auth/SignupSubscription";
 import SignupSubscriptionView from "./webDesk/Auth/SignupSubscriptionView";
 import SignUpMain from "./webDesk/Auth/SignUpMain";
+import WebLogin from "./webDesk/Auth/WebLogin";
+import WebDashboard from "./webDesk/MainDash/WebDashboard";
 
 const Splash1 = lazy(() => import("./webDesk/Auth/SelectProfile"));
 
@@ -55,17 +57,9 @@ function App() {
             <ScrollToTopOnNavigation />
             <Routes>
               <Route path="/" element={<Splash1 />} />
-              <Route path="/Choose-Identity" element={<StartSignUp />} />
-              <Route path="/SignUpNow" element={<SignUpMain />} />
-              <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
-              <Route
-                path="/Sign-Up/Subscription"
-                element={<SignupSubscription />}
-              />
-              <Route
-                path="/Sign-Up/Subscription-view"
-                element={<SignupSubscriptionView />}
-              />
+              <Route path="/User-Web-Onboarding" element={<StartSignUp />} />
+              <Route path="/User-Web-Login" element={<WebLogin />} />
+              <Route path="/User-Dashboard" element={<WebDashboard />} />
             </Routes>
           </RecoilRoot>
         </Suspense>
