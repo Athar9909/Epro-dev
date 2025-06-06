@@ -1,83 +1,94 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function SignupForm() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        email: 'info@techgropse.com',
-        about: '',
-        password: '',
-        confirmPassword: '',
-        phoneNumber: '',
-        countryCode: '+966'
-    });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    email: "info@techgropse.com",
+    about: "",
+    password: "",
+    confirmPassword: "",
+    phoneNumber: "",
+    countryCode: "+966",
+  });
 
-    const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
-    return (
-        <div className="min-h-screen bg-white">
-            {/* Header with Progress Steps */}
-            <div className="w-full px-4 py-6 md:px-8">
-                <div className="max-w-6xl mx-auto">
-                    <h1 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6 md:mb-8">
-                        Company Sign Up Process
-                    </h1>
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header with Progress Steps */}
+      <div className="w-full px-4 py-6 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6 md:mb-8">
+            Company Sign Up Process
+          </h1>
 
-                    {/* Progress Steps */}
-                    <div className="flex items-center justify-between mb-8 md:mb-12">
-                        <div className="flex items-center">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-                                style={{ backgroundColor: '#009EB4' }}>
-                                ✓
-                            </div>
-                            <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">Step 01</span>
-                        </div>
-
-                        <div className="flex-1 h-px bg-gray-300 mx-4"></div>
-
-                        <div className="flex items-center">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-                                style={{ backgroundColor: '#009EB4' }}>
-                                ✓
-                            </div>
-                            <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">Step 02</span>
-                        </div>
-
-                        <div className="flex-1 h-px bg-gray-300 mx-4"></div>
-
-                        <div className="flex items-center">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-                                style={{ backgroundColor: '#009EB4' }}>
-                                ✓
-                            </div>
-                            <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">Step 03</span>
-                        </div>
-
-                        <div className="flex-1 h-px bg-gray-300 mx-4"></div>
-
-                        <div className="flex items-center">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
-                                style={{ backgroundColor: '#009EB4' }}>
-                                ✓
-                            </div>
-                            <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">Step 04</span>
-                        </div>
-                    </div>
-                </div>
+          {/* Progress Steps */}
+          <div className="flex items-center justify-between mb-8 md:mb-12">
+            <div className="flex items-center">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
+                style={{ backgroundColor: "#009EB4" }}>
+                ✓
+              </div>
+              <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">
+                Step 01
+              </span>
             </div>
+
+            <div className="flex-1 h-px bg-gray-300 mx-4"></div>
+
+            <div className="flex items-center">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
+                style={{ backgroundColor: "#009EB4" }}>
+                ✓
+              </div>
+              <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">
+                Step 02
+              </span>
+            </div>
+
+            <div className="flex-1 h-px bg-gray-300 mx-4"></div>
+
+            <div className="flex items-center">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
+                style={{ backgroundColor: "#009EB4" }}>
+                ✓
+              </div>
+              <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">
+                Step 03
+              </span>
+            </div>
+
+            <div className="flex-1 h-px bg-gray-300 mx-4"></div>
+
+            <div className="flex items-center">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium"
+                style={{ backgroundColor: "#009EB4" }}>
+                ✓
+              </div>
+              <span className="ml-2 text-sm font-medium text-gray-700 hidden sm:inline">
+                Step 04
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
             {/* Main Form Container */}
             <div className="px-4 md:px-8 pb-8">
@@ -89,7 +100,7 @@ export default function SignupForm() {
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-2 border-[#D9D9D9] border-dashed px-4 py-4 sm:py-2 rounded-container bg-[#f7f7f7]">
                                 <div className="flex items-center gap-3">
                                     <div className="relative w-20 sm:w-26 h-16 sm:h-26 rounded-full flex items-center justify-center text-white bg-[#f7f7f7] border-3 border-white">
-                                        <img src="/resources/icons/add.svg" alt='add-icon' className='absolute -bottom-1 -right-1' />
+                                        <img src="assets/resources/icons/add.svg" alt='add-icon' className='absolute -bottom-1 -right-1' />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 text-2xl">Profile Photo</h3>
@@ -100,7 +111,7 @@ export default function SignupForm() {
                                     className="px-6 py-2 text-white rounded-btn text-sm font-medium hover:opacity-90 transition-opacity flex gap-2"
                                     style={{ backgroundColor: '#009EB4' }}
                                 >
-                                    <img src="/resources/icons/upload.svg" alt='upload-icon' />
+                                    <img src="assets/resources/icons/upload.svg" alt='upload-icon' />
                                     <span>
                                         Upload
                                     </span>
@@ -128,7 +139,7 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="/resources/icons/user.svg" alt='user-icon' />
+                                            <img src="assets/resources/icons/user.svg" alt='user-icon' />
                                         </div>
                                     </div>
                                 </div>
@@ -149,11 +160,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -174,7 +185,7 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="/resources/icons/email.svg" alt='email-icon' />
+                                            <img src="assets/resources/icons/email.svg" alt='email-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -214,7 +225,7 @@ export default function SignupForm() {
                                                 style={{ focusRingColor: '#009EB4' }}
                                             />
                                             <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                                <img src="/resources/icons/phone.svg" alt='phone-icon' />
+                                                <img src="assets/resources/icons/phone.svg" alt='phone-icon' />
                                             </div>
                                         </div>
                                     </div>
@@ -254,11 +265,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -278,11 +289,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -312,14 +323,14 @@ export default function SignupForm() {
                                 >
                                     Back
                                 </button>
-                                <Link
-                                to="/Sign-Up/Subscription"
-                                    className="flex-1 px-6 py-3 text-white rounded-btn font-medium hover:opacity-90 transition-opacity text-center"
+                                <button
+                                    type="submit"
+                                    className="flex-1 px-6 py-3 text-white rounded-btn font-medium hover:opacity-90 transition-opacity"
                                     style={{ backgroundColor: '#009EB4' }}
                                     disabled={!agreeToTerms}
                                 >
                                     Continue
-                                </Link>
+                                </button>
                             </div>
                         </form>
                     </div>
