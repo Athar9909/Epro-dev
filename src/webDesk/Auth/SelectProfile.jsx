@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import CommHead from "./commHead";
+import CommHead from "./CommHead";
 import CommFoot from "./CommFoot";
 import CommNote from "./CommNote";
+import { Link } from "react-router-dom";
 
 const SelectProfile = () => {
   const [selectedProfile, setSelectedProfile] = useState(null);
@@ -59,6 +60,7 @@ const SelectProfile = () => {
                     <img
                       className="font-semibold"
                       src="resources/icons/people.svg"
+                      alt="people"
                     />
                   </div>
                 </div>
@@ -109,7 +111,8 @@ const SelectProfile = () => {
             <button className="flex-1 bg-[#009EB4] text-white py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
               Continue as Guest
             </button>
-            <button
+            <Link
+            to="/Choose-Identity"
               className={`flex-1 py-3 px-6 rounded-btn font-medium transition-colors ${
                 selectedProfile
                   ? "bg-gray-900 text-white hover:bg-gray-800"
@@ -117,7 +120,7 @@ const SelectProfile = () => {
               }`}
               disabled={!selectedProfile}>
               Next Step
-            </button>
+            </Link>
           </div>
         </div>
       </div>

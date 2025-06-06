@@ -110,29 +110,29 @@ export default function SignupSubscriptionView() {
             {/* Main Content */}
             <div className="px-4 md:px-8 py-8">
                 <div className="max-w-7xl mx-auto">
-                         {/* Payment Method Header */}
-                            <div className="bg-white rounded-lg p-6 shadow-sm w-full mb-4">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center space-x-3">
-                                        <div className="w-20 h-20 rounded-lg flex items-center justify-center text-white">
-                                            <img src="assets/resources/icons/secure.svg" alt='secure-icon' />
+                    {/* Payment Method Header */}
+                    <div className="bg-white rounded-lg p-6 shadow-sm w-full mb-4">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-20 h-20 rounded-lg flex items-center justify-center text-white">
+                                    <img src="/resources/icons/secure.svg" alt='secure-icon' />
 
-                                        </div>
-                                        <div>
-                                            <h2 className="text-xl font-semibold text-gray-900">Choose Payment Method</h2>
-                                            <p className="text-sm text-gray-600">All transactions are secure and encrypted</p>
-                                        </div>
-                                    </div>
-                                    <button className="bg-[#009EB4] text-white px-4 py-2 rounded-md text-sm hover:bg-opacity-90 transition-colors">
-                                        Proceed Payment →
-                                    </button>
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-semibold text-gray-900">Choose Payment Method</h2>
+                                    <p className="text-sm text-gray-600">All transactions are secure and encrypted</p>
                                 </div>
                             </div>
+                            <button className="bg-[#009EB4] text-white px-4 py-2 rounded-md text-sm hover:bg-opacity-90 transition-colors">
+                                Proceed Payment →
+                            </button>
+                        </div>
+                    </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
                         {/* Left Column - Privacy Policy */}
                         <div className="space-y-6">
-                       
+
 
                             {/* What you will get */}
                             <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -158,15 +158,15 @@ export default function SignupSubscriptionView() {
                             {/* Selected Plan */}
                             <div className="bg-white rounded-lg p-6 shadow-sm">
                                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Selected Plan</h3>
-                                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <div className="bg-[#f7f7f7] border border-[#e5e5e5] rounded-lg p-4">
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-sm bg-yellow-200 text-yellow-800 px-2 py-1 rounded">You save 100 SAR annually</span>
                                         <button className="text-[#009EB4] text-sm font-medium">Change</button>
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <h4 className="text-xl font-bold text-gray-900">300 AED <span className="text-sm font-normal">Per month</span></h4>
-                                            <p className="text-sm text-gray-600">Silver Plan</p>
+                                            <p className="text-2xl font-extrabold text-gray-600">Silver Plan</p>
+                                            <h4 className="text-2xl font-bold text-[#009EB4]">300 AED <span className="text-sm text-gray-900 font-semibold">Per month</span></h4>
                                             <p className="text-xs text-gray-500">500 AED billed annually</p>
                                         </div>
                                     </div>
@@ -179,119 +179,177 @@ export default function SignupSubscriptionView() {
 
                                 {/* Payment Options */}
                                 <div className="space-y-3 mb-6">
-                                    <label className="flex items-center space-x-3 cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="payment"
-                                            value="apple"
-                                            checked={paymentMethod === 'apple'}
-                                            onChange={(e) => setPaymentMethod(e.target.value)}
-                                            className="w-4 h-4 text-[#009EB4]"
-                                        />
-                                        <span className="text-2xl">🍎</span>
-                                        <span className="text-gray-700">Apple Pay</span>
-                                    </label>
+                                    {/* Apple Pay */}
+                                    <div className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'>
+                                        <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="apple"
+                                                checked={paymentMethod === 'apple'}
+                                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                                className="w-4 h-4 text-[#009EB4] ml-2"
+                                            />
+                                            <div className="flex items-center space-x-3">
+                                                <span className="text-2xl bg-[#f3f3f3] p-4 rounded-btn">
+                                                    <img src='/resources/icons/apple.svg' alt='apple.svg' />
+                                                </span>
+                                                <span className="text-gray-700">Apple Pay</span>
+                                            </div>
+                                        </label>
+                                    </div>
 
-                                    <label className="flex items-center space-x-3 cursor-pointer">
-                                        <input
-                                            type="radio"
-                                            name="payment"
-                                            value="card"
-                                            checked={paymentMethod === 'card'}
-                                            onChange={(e) => setPaymentMethod(e.target.value)}
-                                            className="w-4 h-4 text-[#009EB4]"
-                                        />
-                                        <span className="text-2xl">💳</span>
-                                        <span className="text-gray-700">Debit/Credit Card</span>
-                                        <div className="w-4 h-4 bg-[#009EB4] rounded-full flex items-center justify-center ml-auto">
-                                            <div className="w-2 h-2 bg-white rounded-full"></div>
-                                        </div>
-                                    </label>
+                                    {/* Card Pay */}
+                                    <div className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'>
+                                        <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="card"
+                                                checked={paymentMethod === 'card'}
+                                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                                className="w-4 h-4 text-[#009EB4] ml-2"
+                                            />
+                                            <div className="flex items-center space-x-3">
+                                                <span className="text-2xl bg-[#f3f3f3] p-4 rounded-btn">
+                                                    <img src='/resources/icons/card.svg' alt='card.svg' />
+                                                </span>
+                                                <span className="text-gray-700">Debit/Credit Card</span>
+                                            </div>
+                                        </label>
+
+                                        {/* Card Form */}
+                                        {paymentMethod === 'card' && (
+                                            <>
+                                                <hr className='border-[#e5e5e5] my-2 border-t' />
+                                                <div className="space-y-4 bg-[#e5e5e5] p-6 rounded-container mx-6 mt-2">
+                                                    <div>
+                                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                            Card Number
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            name="number"
+                                                            value={cardData.number}
+                                                            onChange={handleCardInput}
+                                                            placeholder="Enter card details"
+                                                            className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                                        />
+                                                    </div>
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                                Expiry Date
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                name="expiry"
+                                                                value={cardData.expiry}
+                                                                onChange={handleCardInput}
+                                                                placeholder="MM"
+                                                                className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                                                CVV
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                name="cvv"
+                                                                value={cardData.cvv}
+                                                                onChange={handleCardInput}
+                                                                placeholder="YY"
+                                                                className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center space-x-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            id="saveCard"
+                                                            checked={saveCard}
+                                                            onChange={(e) => setSaveCard(e.target.checked)}
+                                                            className="w-4 h-4 text-[#009EB4] rounded"
+                                                        />
+                                                        <label htmlFor="saveCard" className="text-sm text-gray-700">
+                                                            Securely save card details
+                                                        </label>
+                                                    </div>
+                                                    <button className="w-full bg-[#009EB4] text-white py-3 rounded-btn font-medium hover:bg-opacity-90 transition-colors">
+                                                        Proceed Payment
+                                                    </button>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    {/* Tabby Pay */}
+                                    <div className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'>
+                                        <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="tabby"
+                                                checked={paymentMethod === 'tabby'}
+                                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                                className="w-4 h-4 text-[#009EB4] ml-2"
+                                            />
+                                            <div className="flex items-center space-x-3">
+                                                <span className="bg-[#f3f3f3] py-4 px-[6px] rounded-btn">
+                                                    <img src='/resources/icons/tabby.svg' alt='tabby.svg' className='w-10' />
+                                                </span>
+                                                <span className="text-gray-700">Tabby (Split in 4 Interest-Free Payment)</span>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    {/* Tamara Pay */}
+                                    <div className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'>
+                                        <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="tamara"
+                                                checked={paymentMethod === 'tamara'}
+                                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                                className="w-4 h-4 text-[#009EB4] ml-2"
+                                            />
+                                            <div className="flex items-center space-x-3">
+                                                <span className="bg-[#f3f3f3] py-5 px-[6px] rounded-btn">
+                                                    <img src='/resources/icons/tamara.svg' alt='tamara.svg' className='w-10' />
+                                                </span>
+                                                <span className="text-gray-700">Tamara (Split in 4 Interest-Free Payment)</span>
+                                            </div>
+                                        </label>
+                                    </div>
                                 </div>
 
-                                {/* Card Form */}
-                                {paymentMethod === 'card' && (
-                                    <div className="space-y-4">
-                                        <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                Card Number
-                                            </label>
-                                            <input
-                                                type="text"
-                                                name="number"
-                                                value={cardData.number}
-                                                onChange={handleCardInput}
-                                                placeholder="Enter card details"
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                            />
-                                        </div>
 
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                    Expiry Date
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="expiry"
-                                                    value={cardData.expiry}
-                                                    onChange={handleCardInput}
-                                                    placeholder="MM"
-                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                                />
-                                            </div>
-                                            <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                                    CVV
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="cvv"
-                                                    value={cardData.cvv}
-                                                    onChange={handleCardInput}
-                                                    placeholder="YY"
-                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                                />
-                                            </div>
-                                        </div>
 
-                                        <div className="flex items-center space-x-2">
-                                            <input
-                                                type="checkbox"
-                                                id="saveCard"
-                                                checked={saveCard}
-                                                onChange={(e) => setSaveCard(e.target.checked)}
-                                                className="w-4 h-4 text-[#009EB4] rounded"
-                                            />
-                                            <label htmlFor="saveCard" className="text-sm text-gray-700">
-                                                Securely save card details
-                                            </label>
-                                        </div>
-
-                                        <button className="w-full bg-[#009EB4] text-white py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors">
-                                            Proceed Payment
-                                        </button>
-                                    </div>
-                                )}
-
-                                {/* Payment Options */}
-                                <div className="mt-6 space-y-2">
-                                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                                        <span className="text-green-500">🟢</span>
-                                        <span>Tamby (Split in 4 Interest-Free Payment)</span>
-                                    </div>
-                                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                                        <span className="text-orange-500">🟠</span>
-                                        <span>Tabara (Split in 4 Interest-Free Payment)</span>
-                                    </div>
-                                </div>
 
                                 {/* Saved Card */}
-                                <div className="mt-6 p-4 border border-gray-200 rounded-lg">
+                                <div className="">
                                     <h4 className="font-medium text-gray-900 mb-2">Saved Card</h4>
-                                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                                        <span>💳</span>
-                                        <span>•••• •••• •••• 1234</span>
+                                    <div className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'>
+                                        <label className="flex flex-row-reverse justify-between items-center cursor-pointer">
+                                            <input
+                                                type="radio"
+                                                name="payment"
+                                                value="visa"
+                                                checked={paymentMethod === 'visa'}
+
+                                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                                className="w-4 h-4 text-[#009EB4]"
+                                            />
+                                            <div className="flex items-center space-x-3">
+
+                                                <span className=" bg-[#f3f3f3] py-5 px-[16px] rounded-btn">
+                                                    <img src='/resources/icons/visa.svg' alt='visa.svg' />
+                                                </span>
+                                                <span className="text-gray-700">*** *** *** 123</span>
+                                            </div>
+                                        </label>
                                     </div>
                                 </div>
                             </div>

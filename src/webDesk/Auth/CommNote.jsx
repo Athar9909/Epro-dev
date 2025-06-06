@@ -1,6 +1,6 @@
 import React from "react";
 
-const CommNote = ({ text }) => {
+const CommNote = ({ strong, text }) => {
   return (
     <div className="bg-[#009EB41A] border-l-4 border-[#009EB41A] p-4 mb-8">
       <div className="flex">
@@ -11,7 +11,7 @@ const CommNote = ({ text }) => {
         </div>
         <div className="ml-3">
           <p className="text-sm text-dark">
-            <strong>Note:</strong> {text}
+            <strong>{strong}:</strong> {text}
           </p>
         </div>
       </div>

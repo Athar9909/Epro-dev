@@ -7,6 +7,10 @@ import StartSignUp from "./webDesk/Auth/StartSignUp";
 import SignupForm from "./webDesk/Auth/SignupForm";
 import SignupSubscription from "./webDesk/Auth/SignupSubscription";
 import SignupSubscriptionView from "./webDesk/Auth/SignupSubscriptionView";
+import SignupVerification from "./webDesk/Auth/SignupVerification";
+import Login from "./webDesk/Auth/Login";
+import Layout from "./webDesk/components/Layout";
+import Homepage from "./webDesk/pages/Homepage";
 
 const Splash1 = lazy(() => import("./webDesk/Auth/SelectProfile"));
 
@@ -55,9 +59,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Splash1 />} />
               <Route path="/Choose-Identity" element={<StartSignUp />} />
+              <Route path="/Sign-Up/Verification" element={<SignupVerification />} />
               <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
               <Route path="/Sign-Up/Subscription" element={<SignupSubscription />} />
-              <Route path="/Sign-Up/Subscription-view" element={<SignupSubscriptionView />} />
+              <Route path="/Sign-Up/Subscription-View" element={<SignupSubscriptionView />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/layout" element={<Layout />} >
+                <Route index element={<Homepage />} />
+              </Route>
             </Routes>
           </RecoilRoot>
         </Suspense>

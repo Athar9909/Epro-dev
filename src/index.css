@@ -1,0 +1,42 @@
+/* --input border: #f5f5f5 */
+/* --input border focus: #e5e5e5 */
+/* --confirm button: #009EB4 */
+/* --confirm button hover: bg-teal-600 */
+
+/* .confirm-btn {
+    color: #009EB4;
+    border: 2px solid #f5f5f5;
+} */
+
+.btn-pri {
+  background: #009eb4;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+.btn-sec {
+  background: #009eb4;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+.cl-pri {
+  color: #009eb4;
+}
+
+.cl-sec {
+  color: #f4c63b;
+}
+
+.hide-scrollbar {
+  overflow: auto;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;              /* Chrome/Safari */
+}

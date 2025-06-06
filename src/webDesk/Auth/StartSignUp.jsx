@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CommHead from "./commHead";
 import CommFoot from "./CommFoot";
 import CommNote from "./CommNote";
+import { Link } from "react-router-dom";
 // import { Check } from "react-feather";
 
 const StartSignUp = () => {
@@ -26,19 +27,17 @@ const StartSignUp = () => {
         <React.Fragment key={step.id}>
           <div className="flex flex-row items-center gap-2">
             <div
-              className={`w-6 h-6 relative top-[3px]  rounded-full flex items-center justify-center text-sm font-semibold mb-1 ${
-                step.id === currentStep
+              className={`w-6 h-6 relative top-[3px]  rounded-full flex items-center justify-center text-sm font-semibold mb-1 ${step.id === currentStep
                   ? "bg-[#009EB4] text-white shadow-lg scale-110"
                   : step.id < currentStep
-                  ? "bg-[#009EB4] text-white"
-                  : "bg-gray-200 text-gray-500 "
-              }`}>
+                    ? "bg-[#009EB4] text-white"
+                    : "bg-gray-200 text-gray-500 "
+                }`}>
               {step.id < currentStep ? <Check size={16} /> : step.id}
             </div>
             <span
-              className={`text-[14px] font-medium  ${
-                step.id === currentStep ? "text-[#009EB4]" : "text-gray-400"
-              }`}>
+              className={`text-[14px] font-medium  ${step.id === currentStep ? "text-[#009EB4]" : "text-gray-400"
+                }`}>
               {step.title}
             </span>
           </div>
@@ -99,11 +98,10 @@ const StartSignUp = () => {
                   <div
                     key={opt.id}
                     onClick={() => handleProfileSelect(opt.id)}
-                    className={`border p-4 w-50 h-50 flex justify-center items-center mx-auto rounded-full cursor-pointer transition-all duration-300 hover:shadow-md ${
-                      selectedProfile === opt.id
+                    className={`border p-4 w-50 h-50 flex justify-center items-center mx-auto rounded-full cursor-pointer transition-all duration-300 hover:shadow-md ${selectedProfile === opt.id
                         ? "border-[#009EB4] bg-[#009EB420]"
                         : "border-gray-200 "
-                    }`}>
+                      }`}>
                     <div className="flex items-center justify-center">
                       <img
                         src={verifyType === opt.id ? opt.icon1 : opt.icon2}
@@ -130,9 +128,11 @@ const StartSignUp = () => {
                 Back
               </button>
 
-              <button className="flex-1 bg-[#009EB4] text-white py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
+              <Link
+                to="/Sign-Up/Verification"
+                className="flex-1 bg-[#009EB4] text-white py-3 px-6 rounded-btn hover:bg-teal-600 transition-colors font-medium">
                 Continue
-              </button>
+              </Link>
             </div>
           </div>
         </div>

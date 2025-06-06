@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SignupForm() {
     const [formData, setFormData] = useState({
@@ -88,7 +89,7 @@ export default function SignupForm() {
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-2 border-[#D9D9D9] border-dashed px-4 py-4 sm:py-2 rounded-container bg-[#f7f7f7]">
                                 <div className="flex items-center gap-3">
                                     <div className="relative w-20 sm:w-26 h-16 sm:h-26 rounded-full flex items-center justify-center text-white bg-[#f7f7f7] border-3 border-white">
-                                        <img src="assets/resources/icons/add.svg" alt='add-icon' className='absolute -bottom-1 -right-1' />
+                                        <img src="/resources/icons/add.svg" alt='add-icon' className='absolute -bottom-1 -right-1' />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 text-2xl">Profile Photo</h3>
@@ -99,7 +100,7 @@ export default function SignupForm() {
                                     className="px-6 py-2 text-white rounded-btn text-sm font-medium hover:opacity-90 transition-opacity flex gap-2"
                                     style={{ backgroundColor: '#009EB4' }}
                                 >
-                                    <img src="assets/resources/icons/upload.svg" alt='upload-icon' />
+                                    <img src="/resources/icons/upload.svg" alt='upload-icon' />
                                     <span>
                                         Upload
                                     </span>
@@ -127,7 +128,7 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="assets/resources/icons/user.svg" alt='user-icon' />
+                                            <img src="/resources/icons/user.svg" alt='user-icon' />
                                         </div>
                                     </div>
                                 </div>
@@ -148,11 +149,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -173,7 +174,7 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="assets/resources/icons/email.svg" alt='email-icon' />
+                                            <img src="/resources/icons/email.svg" alt='email-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -213,7 +214,7 @@ export default function SignupForm() {
                                                 style={{ focusRingColor: '#009EB4' }}
                                             />
                                             <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                                <img src="assets/resources/icons/phone.svg" alt='phone-icon' />
+                                                <img src="/resources/icons/phone.svg" alt='phone-icon' />
                                             </div>
                                         </div>
                                     </div>
@@ -253,11 +254,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -277,11 +278,11 @@ export default function SignupForm() {
                                             style={{ focusRingColor: '#009EB4' }}
                                         />
                                         <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                                            <img src="assets/resources/icons/lock.svg" alt='lock-icon' />
+                                            <img src="/resources/icons/lock.svg" alt='lock-icon' />
 
                                         </div>
                                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer">
-                                            <img src="assets/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
+                                            <img src="/resources/icons/eye-slash.svg" alt='eye-slash-icon' />
 
                                         </div>
                                     </div>
@@ -311,14 +312,14 @@ export default function SignupForm() {
                                 >
                                     Back
                                 </button>
-                                <button
-                                    type="submit"
-                                    className="flex-1 px-6 py-3 text-white rounded-btn font-medium hover:opacity-90 transition-opacity"
+                                <Link
+                                to="/Sign-Up/Subscription"
+                                    className="flex-1 px-6 py-3 text-white rounded-btn font-medium hover:opacity-90 transition-opacity text-center"
                                     style={{ backgroundColor: '#009EB4' }}
                                     disabled={!agreeToTerms}
                                 >
                                     Continue
-                                </button>
+                                </Link>
                             </div>
                         </form>
                     </div>

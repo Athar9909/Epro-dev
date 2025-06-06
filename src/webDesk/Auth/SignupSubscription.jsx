@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SignupSubscription() {
     const [selectedPlan, setSelectedPlan] = useState('gold');
@@ -15,7 +16,7 @@ export default function SignupSubscription() {
                 'Product Reviews',
                 'No premium support'
             ],
-            icon: 'assets/resources/icons/subscriptionPlan.svg',
+            icon: '/resources/icons/subscriptionPlan.svg',
             bgColor: 'bg-white',
             borderColor: 'border-[#009EB4]'
         },
@@ -29,7 +30,7 @@ export default function SignupSubscription() {
                 'Contrary to popular belief. Lorem ipsum is not is...',
                 'Lorem ipsum is simply dummy text of the printing'
             ],
-            icon: 'assets/resources/icons/subscriptionPlan.svg',
+            icon: '/resources/icons/subscriptionPlan.svg',
             bgColor: 'bg-white',
             borderColor: 'border-[#009EB4]',
             recommended: true
@@ -44,7 +45,7 @@ export default function SignupSubscription() {
                 'Product Reviews',
                 'No premium support'
             ],
-            icon: 'assets/resources/icons/subscriptionPlan.svg',
+            icon: '/resources/icons/subscriptionPlan.svg',
             bgColor: 'bg-white',
             borderColor: 'border-[#009EB4]'
         }
@@ -121,7 +122,7 @@ export default function SignupSubscription() {
                                     : 'text-gray-600 hover:text-gray-900'
                                     }`}
                             >
-                                {/* <img src="assets/resources/icons/filter.svg" alt='filter-icon' /> */}
+                                {/* <img src="/resources/icons/filter.svg" alt='filter-icon' /> */}
                                 <span>
                                     Monthly
                                 </span>
@@ -152,7 +153,7 @@ export default function SignupSubscription() {
                                 {plan.recommended && (
                                     <div className="absolute -z-10 -top-4 left-1/2 transform -translate-x-1/2 w-full">
                                         <div className="bg-[#009EB4] text-white pr-4 pl-2 py-1 rounded-tl-2xl rounded-tr-2xl text-xs flex gap-2 items-center justify-start font-medium">
-                                            <img src="assets/resources/icons/percentage.svg" alt='percentage-icon' />
+                                            <img src="/resources/icons/percentage.svg" alt='percentage-icon' />
                                             <span>
                                                 Recommended
                                             </span>
@@ -175,7 +176,7 @@ export default function SignupSubscription() {
                                         {plan.features.map((feature, index) => (
                                             <li key={index} className="flex items-start text-sm text-gray-600">
                                                 <div className="w-4 h-4 rounded-full bg-[#009EB4] flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
-                                                    <img src="assets/resources/icons/tick.svg" alt='tick-icon' />
+                                                    <img src="/resources/icons/tick.svg" alt='tick-icon' />
                                                 </div>
                                                 {feature}
                                             </li>
@@ -198,9 +199,11 @@ export default function SignupSubscription() {
                         <button className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition-colors">
                             Back
                         </button>
-                        <button className="flex-1 px-6 py-3 bg-[#009EB4] text-white rounded-md font-medium hover:bg-opacity-90 transition-colors">
+                        <Link
+                        to="/Sign-Up/Subscription-View"
+                         className="flex-1 px-6 py-3 bg-[#009EB4] text-white rounded-md font-medium hover:bg-opacity-90 transition-colors text-center">
                             Continue
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
