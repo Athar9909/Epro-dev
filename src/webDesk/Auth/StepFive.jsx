@@ -137,20 +137,18 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                   <div className="bg-[#f7f7f7] rounded-lg p-1 shadow-sm border border-[#e5e5e5]">
                     <button
                       onClick={() => setBillingCycle("monthly")}
-                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
-                        billingCycle === "monthly"
+                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${billingCycle === "monthly"
                           ? "bg-[#009EB4] text-white"
                           : "text-gray-600 hover:text-gray-900"
-                      }`}>
+                        }`}>
                       Monthly
                     </button>
                     <button
                       onClick={() => setBillingCycle("annual")}
-                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
-                        billingCycle === "annual"
+                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${billingCycle === "annual"
                           ? "bg-[#009EB4] text-white"
                           : "text-gray-600 hover:text-gray-900"
-                      }`}>
+                        }`}>
                       Annual
                     </button>
                   </div>
@@ -163,11 +161,10 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                   <motion.div
                     key={plan.id}
                     whileHover={{ y: -5 }}
-                    className={`relative bg-white rounded-lg border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
-                      selectedPlan === plan.id
+                    className={`relative bg-white rounded-lg border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${selectedPlan === plan.id
                         ? plan.borderColor
                         : "border-[#e5e5e5]"
-                    } ${plan.recommended ? "transform scale-105" : ""}`}
+                      } ${plan.recommended ? "transform scale-105" : ""}`}
                     onClick={() => setSelectedPlan(plan.id)}>
                     {plan.recommended && (
                       <motion.div
@@ -233,11 +230,10 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                         See benefits →
                       </div>
                       <button
-                        className={`w-full py-2 px-4 border rounded-md transition-colors ${
-                          selectedPlan === plan.id
+                        className={`w-full py-2 px-4 border rounded-md transition-colors ${selectedPlan === plan.id
                             ? "bg-[#009EB4] text-white border-[#009EB4]"
                             : "border-[#009EB4] text-[#009EB4] hover:bg-[#009EB4] hover:text-white"
-                        }`}>
+                          }`}>
                         {selectedPlan === plan.id ? "Selected" : "Choose Plan"}
                       </button>
                     </div>
@@ -417,189 +413,249 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                         </div>
 
                         {/* Payment Method */}
-                        <div className="bg-white rounded-lg p-6 shadow-sm">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                            Payment Method
-                          </h3>
+                        <motion.div
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.5 }}
+                          className="bg-white rounded-lg p-6 shadow-sm"
+                        >
+                          <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Method</h3>
 
                           {/* Payment Options */}
                           <div className="space-y-3 mb-6">
-                            <motion.label
-                              whileTap={{ scale: 0.98 }}
-                              className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50">
-                              <input
-                                type="radio"
-                                name="payment"
-                                value="apple"
-                                checked={paymentMethod === "apple"}
-                                onChange={(e) =>
-                                  setPaymentMethod(e.target.value)
-                                }
-                                className="w-4 h-4 text-[#009EB4]"
-                              />
-                              <span className="text-2xl">🍎</span>
-                              <span className="text-gray-700">Apple Pay</span>
-                            </motion.label>
+                            {/* Apple Pay */}
+                            <motion.div
+                              whileHover={{ y: -2 }}
+                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
+                            >
+                              <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                <input
+                                  type="radio"
+                                  name="payment"
+                                  value="apple"
+                                  checked={paymentMethod === 'apple'}
+                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  className="w-4 h-4 text-[#009EB4] ml-2"
+                                />
+                                <div className="flex items-center space-x-3">
+                                  <motion.span
+                                    className="text-2xl bg-[#f3f3f3] p-4 rounded-btn"
+                                  >
+                                    <img src='/resources/icons/apple.svg' alt='apple.svg' />
+                                  </motion.span>
+                                  <span className="text-gray-700">Apple Pay</span>
+                                </div>
+                              </label>
+                            </motion.div>
 
-                            <motion.label
-                              whileTap={{ scale: 0.98 }}
-                              className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 border border-[#009EB4] bg-blue-50">
-                              <input
-                                type="radio"
-                                name="payment"
-                                value="card"
-                                checked={paymentMethod === "card"}
-                                onChange={(e) =>
-                                  setPaymentMethod(e.target.value)
-                                }
-                                className="w-4 h-4 text-[#009EB4]"
-                              />
-                              <span className="text-2xl">💳</span>
-                              <span className="text-gray-700">
-                                Debit/Credit Card
-                              </span>
-                              <div className="w-4 h-4 bg-[#009EB4] rounded-full flex items-center justify-center ml-auto">
-                                <div className="w-2 h-2 bg-white rounded-full"></div>
-                              </div>
-                            </motion.label>
+                            {/* Card Pay */}
+                            <AnimatePresence>
+                              <motion.div
+                                key="card-payment"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
+                              >
+                                <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                  <input
+                                    type="radio"
+                                    name="payment"
+                                    value="card"
+                                    checked={paymentMethod === 'card'}
+                                    onChange={(e) => setPaymentMethod(e.target.value)}
+                                    className="w-4 h-4 text-[#009EB4] ml-2"
+                                  />
+                                  <div className="flex items-center space-x-3">
+                                    <motion.span
+
+                                      className="text-2xl bg-[#f3f3f3] p-4 rounded-btn"
+                                    >
+                                      <img src='/resources/icons/card.svg' alt='card.svg' />
+                                    </motion.span>
+                                    <span className="text-gray-700">Debit/Credit Card</span>
+                                  </div>
+                                </label>
+
+                                {/* Card Form */}
+                                <AnimatePresence>
+                                  {paymentMethod === 'card' && (
+                                    <motion.div
+                                      initial={{ height: 0, opacity: 0 }}
+                                      animate={{ height: 'auto', opacity: 1 }}
+                                      exit={{ height: 0, opacity: 0 }}
+                                      transition={{ duration: 0.3 }}
+                                    >
+                                      <hr className='border-[#e5e5e5] my-2 border-t' />
+                                      <div className="space-y-4 bg-[#e5e5e5] p-6 rounded-container mx-6 mt-2">
+                                        <motion.div
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          transition={{ delay: 0.1 }}
+                                        >
+                                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                                            Card Number
+                                          </label>
+                                          <input
+                                            type="text"
+                                            name="number"
+                                            value={cardData.number}
+                                            onChange={handleCardInput}
+                                            placeholder="Enter card details"
+                                            className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                          />
+                                        </motion.div>
+                                        <div className="grid grid-cols-2 gap-4">
+                                          <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.15 }}
+                                          >
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                              Expiry Date
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="expiry"
+                                              value={cardData.expiry}
+                                              onChange={handleCardInput}
+                                              placeholder="MM"
+                                              className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                            />
+                                          </motion.div>
+                                          <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.2 }}
+                                          >
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                              CVV
+                                            </label>
+                                            <input
+                                              type="text"
+                                              name="cvv"
+                                              value={cardData.cvv}
+                                              onChange={handleCardInput}
+                                              placeholder="YY"
+                                              className="w-full px-4 py-3 border border-[#e7e7e7] bg-white rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
+                                            />
+                                          </motion.div>
+                                        </div>
+                                        <motion.div
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          transition={{ delay: 0.25 }}
+                                          className="flex items-center space-x-2"
+                                        >
+                                          <input
+                                            type="checkbox"
+                                            id="saveCard"
+                                            checked={saveCard}
+                                            onChange={(e) => setSaveCard(e.target.checked)}
+                                            className="w-4 h-4 text-[#009EB4] rounded"
+                                          />
+                                          <label htmlFor="saveCard" className="text-sm text-gray-700">
+                                            Securely save card details
+                                          </label>
+                                        </motion.div>
+                                        <motion.button
+                                          whileHover={{ scale: 1.02 }}
+                                          whileTap={{ scale: 0.98 }}
+                                          className="w-full bg-[#009EB4] text-white py-3 rounded-btn font-medium hover:bg-opacity-90 transition-colors"
+                                          onClick={handlePaymentSubmit}
+                                          disabled={isProcessing}>
+                                          {isProcessing ? "Processing..." : "Proceed Payment →"}
+                                        </motion.button>
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </motion.div>
+                            </AnimatePresence>
+
+                            {/* Tabby Pay */}
+                            <motion.div
+                              whileHover={{ y: -2 }}
+                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
+                            >
+                              <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                <input
+                                  type="radio"
+                                  name="payment"
+                                  value="tabby"
+                                  checked={paymentMethod === 'tabby'}
+                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  className="w-4 h-4 text-[#009EB4] ml-2"
+                                />
+                                <div className="flex items-center space-x-3">
+                                  <motion.span
+                                    className="bg-[#f3f3f3] py-4 px-[6px] rounded-btn"
+                                  >
+                                    <img src='/resources/icons/tabby.svg' alt='tabby.svg' className='w-10' />
+                                  </motion.span>
+                                  <span className="text-gray-700">Tabby (Split in 4 Interest-Free Payment)</span>
+                                </div>
+                              </label>
+                            </motion.div>
+
+                            {/* Tamara Pay */}
+                            <motion.div
+                              whileHover={{ y: -2 }}
+                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
+                            >
+                              <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
+                                <input
+                                  type="radio"
+                                  name="payment"
+                                  value="tamara"
+                                  checked={paymentMethod === 'tamara'}
+                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  className="w-4 h-4 text-[#009EB4] ml-2"
+                                />
+                                <div className="flex items-center space-x-3">
+                                  <motion.span
+                                    className="bg-[#f3f3f3] py-5 px-[6px] rounded-btn"
+                                  >
+                                    <img src='/resources/icons/tamara.svg' alt='tamara.svg' className='w-10' />
+                                  </motion.span>
+                                  <span className="text-gray-700">Tamara (Split in 4 Interest-Free Payment)</span>
+                                </div>
+                              </label>
+                            </motion.div>
                           </div>
 
-                          {/* Card Form */}
-                          {paymentMethod === "card" && (
-                            <motion.form
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              transition={{ duration: 0.3 }}
-                              onSubmit={handlePaymentSubmit}
-                              className="space-y-4">
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                  Card Number
-                                </label>
+                          {/* Saved Card */}
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                          >
+                            <h4 className="font-medium text-gray-900 mb-2">Saved Card</h4>
+                            <motion.div
+                              whileHover={{ y: -2 }}
+                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
+                            >
+                              <label className="flex flex-row-reverse justify-between items-center cursor-pointer">
                                 <input
-                                  type="text"
-                                  name="number"
-                                  value={cardData.number}
-                                  onChange={handleCardInput}
-                                  placeholder="1234 5678 9012 3456"
-                                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                  required
+                                  type="radio"
+                                  name="payment"
+                                  value="visa"
+                                  checked={paymentMethod === 'visa'}
+                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  className="w-4 h-4 text-[#009EB4]"
                                 />
-                              </div>
-
-                              <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Expiry Date
-                                  </label>
-                                  <input
-                                    type="text"
-                                    name="expiry"
-                                    value={cardData.expiry}
-                                    onChange={handleCardInput}
-                                    placeholder="MM/YY"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                    required
-                                  />
+                                <div className="flex items-center space-x-3">
+                                  <motion.span
+                                    className=" bg-[#f3f3f3] py-5 px-[16px] rounded-btn"
+                                  >
+                                    <img src='/resources/icons/visa.svg' alt='visa.svg' />
+                                  </motion.span>
+                                  <span className="text-gray-700">*** *** *** 123</span>
                                 </div>
-                                <div>
-                                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    CVV
-                                  </label>
-                                  <input
-                                    type="text"
-                                    name="cvv"
-                                    value={cardData.cvv}
-                                    onChange={handleCardInput}
-                                    placeholder="123"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                    required
-                                  />
-                                </div>
-                              </div>
-
-                              <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                  Cardholder Name
-                                </label>
-                                <input
-                                  type="text"
-                                  name="name"
-                                  value={cardData.name}
-                                  onChange={handleCardInput}
-                                  placeholder="John Doe"
-                                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#009EB4] focus:border-transparent"
-                                  required
-                                />
-                              </div>
-
-                              <div className="flex items-center space-x-2">
-                                <input
-                                  type="checkbox"
-                                  id="saveCard"
-                                  checked={saveCard}
-                                  onChange={(e) =>
-                                    setSaveCard(e.target.checked)
-                                  }
-                                  className="w-4 h-4 text-[#009EB4] rounded"
-                                />
-                                <label
-                                  htmlFor="saveCard"
-                                  className="text-sm text-gray-700">
-                                  Securely save card details for future payments
-                                </label>
-                              </div>
-
-                              <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                type="submit"
-                                disabled={isProcessing}
-                                className="w-full bg-[#009EB4] text-white py-3 rounded-md font-medium hover:bg-opacity-90 transition-colors disabled:opacity-70">
-                                {isProcessing ? (
-                                  <span className="flex items-center justify-center">
-                                    <svg
-                                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill="none"
-                                      viewBox="0 0 24 24">
-                                      <circle
-                                        className="opacity-25"
-                                        cx="12"
-                                        cy="12"
-                                        r="10"
-                                        stroke="currentColor"
-                                        strokeWidth="4"></circle>
-                                      <path
-                                        className="opacity-75"
-                                        fill="currentColor"
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    Processing...
-                                  </span>
-                                ) : (
-                                  "Proceed Payment"
-                                )}
-                              </motion.button>
-                            </motion.form>
-                          )}
-
-                          {/* Payment Options */}
-                          <div className="mt-6 space-y-2">
-                            <div className="flex items-center space-x-2 text-sm text-gray-600 p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
-                              <span className="text-green-500">🟢</span>
-                              <span>
-                                Tamby (Split in 4 Interest-Free Payment)
-                              </span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-sm text-gray-600 p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
-                              <span className="text-orange-500">🟠</span>
-                              <span>
-                                Tabara (Split in 4 Interest-Free Payment)
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                              </label>
+                            </motion.div>
+                          </motion.div>
+                        </motion.div>
                       </div>
                     </motion.div>
                   )}

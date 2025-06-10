@@ -3,7 +3,6 @@ import { useState } from 'react';
 // Categories Grid Component
 const CategoriesGrid = () => {
   const categories = [
-    { name: 'Healthcare', count: '24 Product available', color: 'bg-blue-100', icon: '🏥' },
     { name: 'Electronics', count: '165 Product available', color: 'bg-green-100', icon: '📱' },
     { name: 'Furniture', count: '24 Product available', color: 'bg-yellow-100', icon: '🪑' },
     { name: 'Gadgets', count: '89 Product available', color: 'bg-purple-100', icon: '🎮' },
@@ -16,9 +15,9 @@ const CategoriesGrid = () => {
         <h3 className="text-lg font-semibold">Explore Categories</h3>
         <button className="text-blue-600 hover:text-blue-800 font-medium">View All →</button>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {categories.map((category, index) => (
-          <div key={index} className={`border border-[#e7e7e7] rounded-[15px] p-4 hover:shadow-md transition-shadow cursor-pointer`}>
+          <div key={index} className={`border-2 border-[#e7e7e7] rounded-[15px] p-4 hover:shadow-md transition-shadow cursor-pointer`}>
             <h4 className="font-medium text-gray-900">{category.name}</h4>
             <p className="text-xs text-gray-600 mb-2">{category.count}</p>
             <img
@@ -51,9 +50,6 @@ const HeroBanner = () => {
           Create Purchase
         </button>
       </div>
-      {/* <div className="absolute right-0 top-0 opacity-20">
-        <span className="text-8xl">🏢</span>
-      </div> */}
     </div>
   );
 };
@@ -66,7 +62,7 @@ const MeetingSchedule = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200">
+    <div className="bg-white rounded-lg p-4 border-2 border-[#e5e5e5]">
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-semibold">Meetings schedule</h4>
         <div className="text-sm flex gap-1">Show all
@@ -84,7 +80,7 @@ const MeetingSchedule = () => {
           <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center space-x-3">
 
-              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border border-[#e5e5e5]">
+              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border-2 border-[#e5e5e5]">
                 <img src='/resources/icons/meetingActive.svg' alt='meetingActive.svg' />
               </div>
 
@@ -95,7 +91,7 @@ const MeetingSchedule = () => {
                   </span>
                   <div className="flex -space-x-1">
                     {[...Array(3)].map((_, i) => (
-                      <div key={i} className="w-5 h-5 bg-gray-300 rounded-full border border-white"></div>
+                      <div key={i} className="w-5 h-5 bg-gray-300 rounded-full border-2 border-white"></div>
                     ))}
                     <span className="text-xs text-gray-500 ml-2">+{meeting.avatars} more</span>
                   </div>
@@ -129,7 +125,7 @@ const RecentProposals = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200">
+    <div className="bg-white rounded-lg p-4 border-2 border-[#e5e5e5]">
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-semibold">Recent Proposal</h4>
         <div className="text-sm flex gap-1">Show all
@@ -146,7 +142,7 @@ const RecentProposals = () => {
         {proposals.map((proposal, index) => (
           <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border border-[#e5e5e5]">
+              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border-2 border-[#e5e5e5]">
                 <img src='/resources/icons/document2.svg' alt='document2.svg' />
               </div>
               <div>
@@ -165,7 +161,7 @@ const RecentProposals = () => {
                 <p className="text-sm text-gray-500">{proposal.date}</p>
               </div>
             </div>
-            <button className="bg-yellow-500 text-gray-900 px-3 py-1 rounded text-sm hover:bg-yellow-600">
+            <button className="bg-yellow-500 text-gray-900 px-3 py-1 rounded text-xs hover:bg-yellow-600">
               View Details →
             </button>
           </div>
@@ -196,7 +192,7 @@ const ProjectProgress = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200">
+    <div className="bg-white rounded-lg p-4 border-2 border-[#e5e5e5]">
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-semibold">Ongoing Projects</h4>
         <div className="text-sm flex gap-1">Show all
@@ -214,7 +210,7 @@ const ProjectProgress = () => {
           <div key={index} className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border border-[#e5e5e5]">
+                <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border-2 border-[#e5e5e5]">
                   <img src='/resources/icons/documentActive.svg' alt='documentActive.svg' />
                 </div>
                 <div>
@@ -231,7 +227,7 @@ const ProjectProgress = () => {
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="btn-pri h-2 rounded-full transition-all duration-300"
                 style={{ width: `${project.progress}%` }}
               />
             </div>
@@ -255,7 +251,7 @@ const RecentTransactions = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg p-4 border border-gray-200">
+    <div className="bg-white rounded-lg p-4 border-2 border-[#e5e5e5]">
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-semibold">Recent Transactions</h4>
         <div className="text-sm flex gap-1">Show all
@@ -272,7 +268,7 @@ const RecentTransactions = () => {
         {transactions.map((transaction, index) => (
           <div key={index} className="flex items-center justify-between py-2">
             <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border border-[#e5e5e5]">
+              <div className="flex items-center space-x-3 p-2 bg-[#f3f3f3] rounded-btn border-2 border-[#e5e5e5]">
                 <img src='/resources/icons/wallet.svg' alt='wallet.svg' />
               </div>
               <div>
@@ -309,7 +305,7 @@ const VendorCards = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {vendors.map((vendor, index) => (
-          <div key={index} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+          <div key={index} className="bg-white rounded-lg p-4 border-2 border-[#e5e5e5] hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-3">
               <div className="w-12 h-12  flex items-center justify-center">
                 <img
@@ -325,7 +321,7 @@ const VendorCards = () => {
                 <h4 className="font-medium text-gray-500 mb-1 text-xs">{vendor.des}</h4>
               </div>
               <div>
-                <div className="flex items-center space-x-2 mb-2 border border-[#e5e5e5] bg-[#f7f7f7] p-1 rounded-md">
+                <div className="flex items-center space-x-2 mb-2 border-2 border-[#e5e5e5] bg-[#f7f7f7] p-1 rounded-md">
                   <img
                     className="font-semibold"
                     src="resources/icons/star.svg"
@@ -333,7 +329,7 @@ const VendorCards = () => {
                   />
                   <span className="text-sm text-gray-600">{vendor.rating}</span>
                 </div>
-                <div className="flex items-center justify-center space-x-2 mb-2 border border-[#e5e5e5] bg-[#f7f7f7] p-1 rounded-md">
+                <div className="flex items-center justify-center space-x-2 mb-2 border-2 border-[#e5e5e5] bg-[#f7f7f7] p-1 rounded-md">
                   <img
                     className="font-semibold w-6 h-6"
                     src="resources/icons/buildingActive.svg"
@@ -367,62 +363,50 @@ const ServicesGrid = () => {
   ];
 
   const vehicleServices = [
-    { name: 'Vehicle Vendor Hire...', price: '150 SAR', category: 'Automobile' },
-    { name: 'Vehicle Vendor Hire...', price: '150 SAR', category: 'Automobile' },
-    { name: 'Vehicle Vendor Hire...', price: '150 SAR', category: 'Automobile' },
-    { name: 'Vehicle Vendor Hire...', price: '150 SAR', category: 'Automobile' },
-    { name: 'Vehicle Vendor Hire...', price: '150 SAR', category: 'Automobile' }
+    { name: 'Vehicle Vendor Hire Service', price: '150 SAR', category: 'Automobile' },
+    { name: 'Vehicle Vendor Hire Service', price: '150 SAR', category: 'Automobile' },
+    { name: 'Vehicle Vendor Hire Service', price: '150 SAR', category: 'Automobile' },
+    { name: 'Vehicle Vendor Hire Service', price: '150 SAR', category: 'Automobile' },
+    { name: 'Vehicle Vendor Hire Service', price: '150 SAR', category: 'Automobile' }
   ];
 
   const ServiceCard = ({ service, isVehicle = false }) => (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-      <div className={`h-32 flex items-center justify-center mx-2 mt-7 relative`}>
-        <img
-          className="font-semibold w-full rounded-btn object-cover"
-          src="resources/product/product.svg"
-          alt="building-icon"
-        />
-        <div className={`text-xs px-2 py-1 rounded btn-pri flex gap-1 absolute left-2 -top-4 border-2 border-white`}>
+    <div className="bg-white rounded-lg border-2 border-[#e5e5e5] overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col p-2">
+      <div className="flex-grow">
+        <div className="h-40 flex items-center justify-center relative mb-4">
           <img
-            className="font-semibold"
-            src="resources/icons/tickWhite.svg"
-            alt="tickWhite-icon"
+            className="w-full h-full object-cover rounded-xl"
+            src="resources/product/product.svg"
+            alt={service.name}
           />
-          <span>
-            {service.category}
-          </span>
+          <div className="text-xs px-2 py-1 rounded btn-pri text-white flex items-center gap-1 absolute left-2 top-2 border-2 border-white">
+            <img
+              className="w-3 h-3"
+              src="resources/icons/tickWhite.svg"
+              alt="verified"
+            />
+            <span>{service.category}</span>
+          </div>
         </div>
+
+        <p className="text-xs text-gray-500 bg-gray-50 px-3 py-1 rounded-full border-2 border-[#e5e5e5] w-fit mb-2">
+          Product
+        </p>
+        <h4 className="font-medium text-gray-900 text-sm mb-3 line-clamp-2 min-h-[2.5rem]">
+          {service.name}
+        </h4>
       </div>
-      <div className="p-3">
-        <p className="text-xs text-gray-500 bg-[#f7f7f7] px-3 py-1 rounded-btn border border-[#e5e5e5] mt-4 w-fit">Product</p>
-        <h4 className="font-medium text-gray-900 text-sm my-2 line-clamp-2">{service.name}</h4>
+      <hr className='text-[#e5e5e5] mb-2' />
+      <div className="p-2 pt-0">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-gray-900">{service.price}</span>
-          <button className={`px-3 py-1 text-xs rounded ${isVehicle ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-600' : 'bg-yellow-500 text-gray-900 hover:bg-yellow-600'
-            }`}>
-            {isVehicle ?
-              <div className='flex gap-1'>
-                <img
-                  className="font-semibold"
-                  src="resources/icons/add2.svg"
-                  alt="add2-icon"
-                />
-                <span>
-                  View
-                </span>
-              </div>
-              :
-              <div className='flex gap-1'>
-                <img
-                  className="font-semibold"
-                  src="resources/icons/add2.svg"
-                  alt="add2-icon"
-                />
-                <span>
-                  View
-                </span>
-              </div>
-            }
+          <span className="font-bold text-gray-900 text-xl">{service.price}</span>
+          <button className={`px-3 py-2 text-xs rounded-md flex items-center gap-1 bg-yellow-500 text-gray-900 hover:bg-yellow-600 transition-colors`}>
+            <img
+              className="w-3 h-3"
+              src="resources/icons/add2.svg"
+              alt="add"
+            />
+            <span>View</span>
           </button>
         </div>
       </div>
@@ -430,27 +414,31 @@ const ServicesGrid = () => {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">Top Services</h3>
-          <button className="text-blue-600 hover:text-blue-800 font-medium">View All →</button>
+          <h3 className="text-lg font-semibold text-gray-800">Top Services</h3>
+          <button className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center gap-1">
+            View All <span>→</span>
+          </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+            <ServiceCard key={`service-${index}`} service={service} />
           ))}
         </div>
       </div>
 
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">Explore Services</h3>
-          <button className="text-blue-600 hover:text-blue-800 font-medium">View All →</button>
+          <h3 className="text-lg font-semibold text-gray-800">Explore Services</h3>
+          <button className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center gap-1">
+            View All <span>→</span>
+          </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5">
           {vehicleServices.map((service, index) => (
-            <ServiceCard key={index} service={service} isVehicle={true} />
+            <ServiceCard key={`vehicle-${index}`} service={service} isVehicle={true} />
           ))}
         </div>
       </div>
@@ -467,17 +455,19 @@ export default function Homepage() {
     <>
       <div className="flex-1">
         <HeroBanner />
-        <CategoriesGrid />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <MeetingSchedule />
-          <RecentProposals />
+        <div className='p-6'>
+          <CategoriesGrid />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <MeetingSchedule />
+            <RecentProposals />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <ProjectProgress />
+            <RecentTransactions />
+          </div>
+          <VendorCards />
+          <ServicesGrid />
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <ProjectProgress />
-          <RecentTransactions />
-        </div>
-        <VendorCards />
-        <ServicesGrid />
       </div>
     </>
   );

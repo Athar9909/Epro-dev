@@ -1,13 +1,6 @@
-export default function Header({setSidebarOpen}) {
+export default function Header({ setSidebarOpen }) {
     return (
         <>
-            <button
-                onClick={() => setSidebarOpen(true)}
-                className="lg:hidden fixed top-4 left-4 z-30 p-2 bg-white rounded-lg shadow-md"
-            >
-                <span className="text-xl">☰</span>
-            </button>
-
             <header className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between fixed right-0 top-0 w-full lg:w-[80%] z-10">
                 <div>
                     <h1 className="text-xl font-semibold text-gray-900">Hello, Zakir Ali</h1>
@@ -17,7 +10,7 @@ export default function Header({setSidebarOpen}) {
                     <div className="flex items-center space-x-2 bg-[#f6f6f6] p-2 rounded-btn border-[#e5e5e5] border">
                         <img
                             className="font-semibold"
-                            src="resources/icons/search.svg"
+                            src="/resources/icons/search.svg"
                             alt="search"
                         />
                         <input className=" text-gray-600 hover:text-gray-900 outline-none" placeholder="Search" />
@@ -42,11 +35,18 @@ export default function Header({setSidebarOpen}) {
                         </div>
                         <img
                             className="font-semibold"
-                            src="resources/icons/downChevron.svg"
+                            src="/resources/icons/downChevron.svg"
                             alt="downChevron"
                         />
                     </div>
                 </div>
+                {/* Small Header */}
+                <button
+                    onClick={() => setSidebarOpen(true)}
+                    className="lg:hidden top-4 left-4 z-30 p-2 bg-[#f3f3f3] rounded-btn border border-[#e5e5e5]"
+                >
+                    <span className="text-xl">☰</span>
+                </button>
             </header>
         </>
     );

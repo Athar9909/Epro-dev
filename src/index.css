@@ -40,3 +40,14 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;              /* Chrome/Safari */
 }
+
+/* Chrome, Safari, Edge */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="date"] {
+  appearance: textfield; /* removes the dropdown icon in some versions */
+}

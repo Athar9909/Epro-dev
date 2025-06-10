@@ -95,9 +95,9 @@ export default function Login() {
                             >
                                 {
                                     loginMethod === "phone" ?
-                                <img src='/resources/icons/phoneActive.svg' alt='phone.svg' />
-:
-                                <img src='/resources/icons/call.svg' alt='phone.svg' />
+                                        <img src='/resources/icons/phoneActive.svg' alt='phone.svg' />
+                                        :
+                                        <img src='/resources/icons/call.svg' alt='phone.svg' />
                                 }
                                 <span>Phone</span>
                             </button>
@@ -108,11 +108,11 @@ export default function Login() {
                                     : 'text-gray-600 hover:text-gray-800'
                                     }`}
                             >
-                                 {
+                                {
                                     loginMethod === "email" ?
-                                <img src='/resources/icons/emailActive.svg' alt='email.svg' />
-:
-                                <img src='/resources/icons/email.svg' alt='email.svg' />
+                                        <img src='/resources/icons/emailActive.svg' alt='email.svg' />
+                                        :
+                                        <img src='/resources/icons/email.svg' alt='email.svg' />
                                 }
                                 <span>Email</span>
                             </button>
@@ -194,21 +194,22 @@ export default function Login() {
                             </div>
 
                             {/* Login Button */}
-                            <button
+                            <Link
+                                to="/Dashboard"
                                 type="button"
-                                className="w-full bg-[#009EB4] text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 transition-colors font-medium"
+                                className="w-full inline-block text-center bg-[#009EB4] text-white py-2 px-4 rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 transition-colors font-medium"
                             >
                                 Login
-                            </button>
+                            </Link>
                         </div>
 
                         {/* Alternative Login Methods */}
                         <div className="space-y-3">
                             <div className="text-center text-sm text-gray-500 flex justify-center items-center gap-2">
-                                <hr className='w-1/3'/>
+                                <hr className='w-1/3' />
                                 or Continue with
-                                <hr className='w-1/3'/>
-                                </div>
+                                <hr className='w-1/3' />
+                            </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <button className="flex items-center justify-center space-x-2 w-full py-2 px-4 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">

@@ -241,14 +241,15 @@ const StepFour = ({ setCurrentStep }) => {
                 Back
               </button>
               <button
-                type="submit"
-                disabled={!isValid || !agreeToTerms}
+                // type="submit"
+                // disabled={!isValid || !agreeToTerms}
                 className="flex-1 px-6 py-3 text-white rounded-md font-medium hover:opacity-90 transition-opacity"
                 style={{
                   backgroundColor:
                     !isValid || !agreeToTerms ? "#ccc" : "#009EB4",
-                  cursor: !isValid || !agreeToTerms ? "not-allowed" : "pointer",
-                }}>
+                  // cursor: !isValid || !agreeToTerms ? "not-allowed" : "pointer",
+                }}
+                onClick={()=>setCurrentStep(5)}>
                 Continue
               </button>
             </div>
