@@ -8,6 +8,12 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+@media (max-width: 640px) {
+  body,
+  html {
+    display: none;
+  }
+}
 
 .head {
   font-size: 16px;

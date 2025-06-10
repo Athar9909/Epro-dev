@@ -33,12 +33,12 @@
 
 .hide-scrollbar {
   overflow: auto;
-  scrollbar-width: none;      /* Firefox */
-  -ms-overflow-style: none;   /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;              /* Chrome/Safari */
+  display: none; /* Chrome/Safari */
 }
 
 /* Chrome, Safari, Edge */

@@ -41,10 +41,11 @@ const SelectProfile = () => {
             {/* Individual Profile */}
             <div>
               <div
-                className={`border-2 relative rounded-lg p-6 text-center cursor-pointer transition-all hover:shadow-md ${selectedProfile === "individual"
+                className={`border-2 relative rounded-lg p-6 text-center cursor-pointer transition-all hover:shadow-md ${
+                  selectedProfile === "individual"
                     ? "border-[#009EB4] bg-[#009EB440]"
                     : "border-gray-200 hover:border-gray-300"
-                  }`}
+                }`}
                 onClick={() => handleProfileSelect("individual")}>
                 {selectedProfile === "individual" && (
                   <span className="">
@@ -72,10 +73,11 @@ const SelectProfile = () => {
 
             <div>
               <div
-                className={`border-2 relative rounded-lg p-6 text-center cursor-pointer transition-all hover:shadow-md ${selectedProfile === "company"
+                className={`border-2 relative rounded-lg p-6 text-center cursor-pointer transition-all hover:shadow-md ${
+                  selectedProfile === "company"
                     ? "border-[#009EB4] bg-[#009EB440]"
                     : "border-gray-200 hover:border-gray-300"
-                  }`}
+                }`}
                 onClick={() => handleProfileSelect("company")}>
                 {selectedProfile === "company" && (
                   <span className="">
@@ -114,11 +116,12 @@ const SelectProfile = () => {
             <Link
               // to="/Choose-Identity"
               // className={`custom-btn bg-[#F4C63B] ${
-              to={"/Choose-Identity"}
-              className={`flex-1 py-3 px-6 rounded-btn font-medium transition-colors ${selectedProfile
+              to={"/User-web/SignUp"}
+              className={`flex-1 py-3 px-6 rounded-btn font-medium transition-colors ${
+                selectedProfile
                   ? "bg-[#F4C63B] text-white hover:bg-gray-800"
                   : "bg-gray-200 text-gray-500 cursor-not-allowed"
-                }`}
+              }`}
               disabled={!selectedProfile}>
               Next Step
             </Link>

@@ -137,18 +137,20 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                   <div className="bg-[#f7f7f7] rounded-lg p-1 shadow-sm border border-[#e5e5e5]">
                     <button
                       onClick={() => setBillingCycle("monthly")}
-                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${billingCycle === "monthly"
+                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
+                        billingCycle === "monthly"
                           ? "bg-[#009EB4] text-white"
                           : "text-gray-600 hover:text-gray-900"
-                        }`}>
+                      }`}>
                       Monthly
                     </button>
                     <button
                       onClick={() => setBillingCycle("annual")}
-                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${billingCycle === "annual"
+                      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
+                        billingCycle === "annual"
                           ? "bg-[#009EB4] text-white"
                           : "text-gray-600 hover:text-gray-900"
-                        }`}>
+                      }`}>
                       Annual
                     </button>
                   </div>
@@ -161,10 +163,11 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                   <motion.div
                     key={plan.id}
                     whileHover={{ y: -5 }}
-                    className={`relative bg-white rounded-lg border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${selectedPlan === plan.id
+                    className={`relative bg-white rounded-lg border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
+                      selectedPlan === plan.id
                         ? plan.borderColor
                         : "border-[#e5e5e5]"
-                      } ${plan.recommended ? "transform scale-105" : ""}`}
+                    } ${plan.recommended ? "transform scale-105" : ""}`}
                     onClick={() => setSelectedPlan(plan.id)}>
                     {plan.recommended && (
                       <motion.div
@@ -230,10 +233,11 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                         See benefits →
                       </div>
                       <button
-                        className={`w-full py-2 px-4 border rounded-md transition-colors ${selectedPlan === plan.id
+                        className={`w-full py-2 px-4 border rounded-md transition-colors ${
+                          selectedPlan === plan.id
                             ? "bg-[#009EB4] text-white border-[#009EB4]"
                             : "border-[#009EB4] text-[#009EB4] hover:bg-[#009EB4] hover:text-white"
-                          }`}>
+                        }`}>
                         {selectedPlan === plan.id ? "Selected" : "Choose Plan"}
                       </button>
                     </div>
@@ -328,9 +332,9 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                         </Link>
                         <button
                           type="submit"
-                          onClick={() => navigate("/UserLogin")}
+                          onClick={() => navigate("/Login")}
                           className={`flex-1  custom-btn text-white text-center ${"bg-[#009EB4] hover:bg-teal-600"}`}>
-                          Continue
+                          Continue to login
                         </button>
                       </div>
                     </motion.div>
@@ -417,33 +421,38 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                           initial={{ y: 20, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           transition={{ delay: 0.5 }}
-                          className="bg-white rounded-lg p-6 shadow-sm"
-                        >
-                          <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Method</h3>
+                          className="bg-white rounded-lg p-6 shadow-sm">
+                          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                            Payment Method
+                          </h3>
 
                           {/* Payment Options */}
                           <div className="space-y-3 mb-6">
                             {/* Apple Pay */}
                             <motion.div
                               whileHover={{ y: -2 }}
-                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
-                            >
+                              className="w-full px-4 py-2 border border-[#e7e7e7] rounded-btn">
                               <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
                                 <input
                                   type="radio"
                                   name="payment"
                                   value="apple"
-                                  checked={paymentMethod === 'apple'}
-                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  checked={paymentMethod === "apple"}
+                                  onChange={(e) =>
+                                    setPaymentMethod(e.target.value)
+                                  }
                                   className="w-4 h-4 text-[#009EB4] ml-2"
                                 />
                                 <div className="flex items-center space-x-3">
-                                  <motion.span
-                                    className="text-2xl bg-[#f3f3f3] p-4 rounded-btn"
-                                  >
-                                    <img src='/resources/icons/apple.svg' alt='apple.svg' />
+                                  <motion.span className="text-2xl bg-[#f3f3f3] p-4 rounded-btn">
+                                    <img
+                                      src="/resources/icons/apple.svg"
+                                      alt="apple.svg"
+                                    />
                                   </motion.span>
-                                  <span className="text-gray-700">Apple Pay</span>
+                                  <span className="text-gray-700">
+                                    Apple Pay
+                                  </span>
                                 </div>
                               </label>
                             </motion.div>
@@ -455,44 +464,45 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
-                              >
+                                className="w-full px-4 py-2 border border-[#e7e7e7] rounded-btn">
                                 <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
                                   <input
                                     type="radio"
                                     name="payment"
                                     value="card"
-                                    checked={paymentMethod === 'card'}
-                                    onChange={(e) => setPaymentMethod(e.target.value)}
+                                    checked={paymentMethod === "card"}
+                                    onChange={(e) =>
+                                      setPaymentMethod(e.target.value)
+                                    }
                                     className="w-4 h-4 text-[#009EB4] ml-2"
                                   />
                                   <div className="flex items-center space-x-3">
-                                    <motion.span
-
-                                      className="text-2xl bg-[#f3f3f3] p-4 rounded-btn"
-                                    >
-                                      <img src='/resources/icons/card.svg' alt='card.svg' />
+                                    <motion.span className="text-2xl bg-[#f3f3f3] p-4 rounded-btn">
+                                      <img
+                                        src="/resources/icons/card.svg"
+                                        alt="card.svg"
+                                      />
                                     </motion.span>
-                                    <span className="text-gray-700">Debit/Credit Card</span>
+                                    <span className="text-gray-700">
+                                      Debit/Credit Card
+                                    </span>
                                   </div>
                                 </label>
 
                                 {/* Card Form */}
                                 <AnimatePresence>
-                                  {paymentMethod === 'card' && (
+                                  {paymentMethod === "card" && (
                                     <motion.div
                                       initial={{ height: 0, opacity: 0 }}
-                                      animate={{ height: 'auto', opacity: 1 }}
+                                      animate={{ height: "auto", opacity: 1 }}
                                       exit={{ height: 0, opacity: 0 }}
-                                      transition={{ duration: 0.3 }}
-                                    >
-                                      <hr className='border-[#e5e5e5] my-2 border-t' />
+                                      transition={{ duration: 0.3 }}>
+                                      <hr className="border-[#e5e5e5] my-2 border-t" />
                                       <div className="space-y-4 bg-[#e5e5e5] p-6 rounded-container mx-6 mt-2">
                                         <motion.div
                                           initial={{ opacity: 0 }}
                                           animate={{ opacity: 1 }}
-                                          transition={{ delay: 0.1 }}
-                                        >
+                                          transition={{ delay: 0.1 }}>
                                           <label className="block text-sm font-medium text-gray-700 mb-2">
                                             Card Number
                                           </label>
@@ -509,8 +519,7 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                                           <motion.div
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
-                                            transition={{ delay: 0.15 }}
-                                          >
+                                            transition={{ delay: 0.15 }}>
                                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                               Expiry Date
                                             </label>
@@ -526,8 +535,7 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                                           <motion.div
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
-                                            transition={{ delay: 0.2 }}
-                                          >
+                                            transition={{ delay: 0.2 }}>
                                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                               CVV
                                             </label>
@@ -545,16 +553,19 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                                           initial={{ opacity: 0 }}
                                           animate={{ opacity: 1 }}
                                           transition={{ delay: 0.25 }}
-                                          className="flex items-center space-x-2"
-                                        >
+                                          className="flex items-center space-x-2">
                                           <input
                                             type="checkbox"
                                             id="saveCard"
                                             checked={saveCard}
-                                            onChange={(e) => setSaveCard(e.target.checked)}
+                                            onChange={(e) =>
+                                              setSaveCard(e.target.checked)
+                                            }
                                             className="w-4 h-4 text-[#009EB4] rounded"
                                           />
-                                          <label htmlFor="saveCard" className="text-sm text-gray-700">
+                                          <label
+                                            htmlFor="saveCard"
+                                            className="text-sm text-gray-700">
                                             Securely save card details
                                           </label>
                                         </motion.div>
@@ -564,7 +575,9 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                                           className="w-full bg-[#009EB4] text-white py-3 rounded-btn font-medium hover:bg-opacity-90 transition-colors"
                                           onClick={handlePaymentSubmit}
                                           disabled={isProcessing}>
-                                          {isProcessing ? "Processing..." : "Proceed Payment →"}
+                                          {isProcessing
+                                            ? "Processing..."
+                                            : "Proceed Payment →"}
                                         </motion.button>
                                       </div>
                                     </motion.div>
@@ -576,24 +589,29 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                             {/* Tabby Pay */}
                             <motion.div
                               whileHover={{ y: -2 }}
-                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
-                            >
+                              className="w-full px-4 py-2 border border-[#e7e7e7] rounded-btn">
                               <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
                                 <input
                                   type="radio"
                                   name="payment"
                                   value="tabby"
-                                  checked={paymentMethod === 'tabby'}
-                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  checked={paymentMethod === "tabby"}
+                                  onChange={(e) =>
+                                    setPaymentMethod(e.target.value)
+                                  }
                                   className="w-4 h-4 text-[#009EB4] ml-2"
                                 />
                                 <div className="flex items-center space-x-3">
-                                  <motion.span
-                                    className="bg-[#f3f3f3] py-4 px-[6px] rounded-btn"
-                                  >
-                                    <img src='/resources/icons/tabby.svg' alt='tabby.svg' className='w-10' />
+                                  <motion.span className="bg-[#f3f3f3] py-4 px-[6px] rounded-btn">
+                                    <img
+                                      src="/resources/icons/tabby.svg"
+                                      alt="tabby.svg"
+                                      className="w-10"
+                                    />
                                   </motion.span>
-                                  <span className="text-gray-700">Tabby (Split in 4 Interest-Free Payment)</span>
+                                  <span className="text-gray-700">
+                                    Tabby (Split in 4 Interest-Free Payment)
+                                  </span>
                                 </div>
                               </label>
                             </motion.div>
@@ -601,24 +619,29 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                             {/* Tamara Pay */}
                             <motion.div
                               whileHover={{ y: -2 }}
-                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
-                            >
+                              className="w-full px-4 py-2 border border-[#e7e7e7] rounded-btn">
                               <label className="flex flex-row-reverse items-center justify-between cursor-pointer w-full">
                                 <input
                                   type="radio"
                                   name="payment"
                                   value="tamara"
-                                  checked={paymentMethod === 'tamara'}
-                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  checked={paymentMethod === "tamara"}
+                                  onChange={(e) =>
+                                    setPaymentMethod(e.target.value)
+                                  }
                                   className="w-4 h-4 text-[#009EB4] ml-2"
                                 />
                                 <div className="flex items-center space-x-3">
-                                  <motion.span
-                                    className="bg-[#f3f3f3] py-5 px-[6px] rounded-btn"
-                                  >
-                                    <img src='/resources/icons/tamara.svg' alt='tamara.svg' className='w-10' />
+                                  <motion.span className="bg-[#f3f3f3] py-5 px-[6px] rounded-btn">
+                                    <img
+                                      src="/resources/icons/tamara.svg"
+                                      alt="tamara.svg"
+                                      className="w-10"
+                                    />
                                   </motion.span>
-                                  <span className="text-gray-700">Tamara (Split in 4 Interest-Free Payment)</span>
+                                  <span className="text-gray-700">
+                                    Tamara (Split in 4 Interest-Free Payment)
+                                  </span>
                                 </div>
                               </label>
                             </motion.div>
@@ -628,29 +651,34 @@ const StepFive = ({ setCurrentStep, setVarHeight }) => {
                           <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                          >
-                            <h4 className="font-medium text-gray-900 mb-2">Saved Card</h4>
+                            transition={{ delay: 0.6 }}>
+                            <h4 className="font-medium text-gray-900 mb-2">
+                              Saved Card
+                            </h4>
                             <motion.div
                               whileHover={{ y: -2 }}
-                              className='w-full px-4 py-2 border border-[#e7e7e7] rounded-btn'
-                            >
+                              className="w-full px-4 py-2 border border-[#e7e7e7] rounded-btn">
                               <label className="flex flex-row-reverse justify-between items-center cursor-pointer">
                                 <input
                                   type="radio"
                                   name="payment"
                                   value="visa"
-                                  checked={paymentMethod === 'visa'}
-                                  onChange={(e) => setPaymentMethod(e.target.value)}
+                                  checked={paymentMethod === "visa"}
+                                  onChange={(e) =>
+                                    setPaymentMethod(e.target.value)
+                                  }
                                   className="w-4 h-4 text-[#009EB4]"
                                 />
                                 <div className="flex items-center space-x-3">
-                                  <motion.span
-                                    className=" bg-[#f3f3f3] py-5 px-[16px] rounded-btn"
-                                  >
-                                    <img src='/resources/icons/visa.svg' alt='visa.svg' />
+                                  <motion.span className=" bg-[#f3f3f3] py-5 px-[16px] rounded-btn">
+                                    <img
+                                      src="/resources/icons/visa.svg"
+                                      alt="visa.svg"
+                                    />
                                   </motion.span>
-                                  <span className="text-gray-700">*** *** *** 123</span>
+                                  <span className="text-gray-700">
+                                    *** *** *** 123
+                                  </span>
                                 </div>
                               </label>
                             </motion.div>

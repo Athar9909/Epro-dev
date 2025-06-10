@@ -68,23 +68,41 @@ function App() {
             <ScrollToTopOnNavigation />
             <Routes>
               <Route path="/" element={<Splash1 />} />
-              <Route path="/Choose-Identity" element={<StartSignUp />} />
+              <Route path="/User-web/SignUp" element={<StartSignUp />} />
               <Route path="/SignUpNow" element={<SignUpMain />} />
               <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
-              <Route path="/Sign-Up/Subscription" element={<SignupSubscription />} />
-              <Route path="/Sign-Up/Subscription-view" element={<SignupSubscriptionView />} />
+              <Route
+                path="/Sign-Up/Subscription"
+                element={<SignupSubscription />}
+              />
+              <Route
+                path="/Sign-Up/Subscription-view"
+                element={<SignupSubscriptionView />}
+              />
               <Route path="/Login" element={<Login />} />
-              <Route path="/Dashboard" element={<Layout />} >
+              <Route path="/Dashboard" element={<Layout />}>
                 <Route index element={<Homepage />} />
                 <Route path="Categories" element={<Categories />} />
-                <Route path="Categories/Sub-Categories" element={<SubCategories />} />
-                <Route path="Categories/Sub-Categories/Product-Listing" element={<ProductListing />} />
-                <Route path="Categories/Sub-Categories/Product-Details" element={<ProductDetail />} />
+                <Route
+                  path="Categories/Sub-Categories"
+                  element={<SubCategories />}
+                />
+                <Route
+                  path="Categories/Sub-Categories/Product-Listing"
+                  element={<ProductListing />}
+                />
+                <Route
+                  path="Categories/Sub-Categories/Product-Details"
+                  element={<ProductDetail />}
+                />
                 <Route path="Vendor-Details" element={<VendorDetails />} />
-                <Route path="Vendor-Details/Vendor-Profile" element={<VendorProfile />} />
+                <Route
+                  path="Vendor-Details/Vendor-Profile"
+                  element={<VendorProfile />}
+                />
                 <Route path="Documents/SOW" element={<SOW />} />
                 <Route path="Meeting" element={<Index />} />
-              <Route path="*" element={<NoPageFound />} />
+                <Route path="*" element={<NoPageFound />} />
               </Route>
             </Routes>
           </RecoilRoot>
