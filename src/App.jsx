@@ -21,8 +21,12 @@ import VendorProfile from "./webDesk/pages/vendor/VendorProfile";
 import SOW from "./webDesk/pages/document/SOW";
 import Meeting from "./webDesk/pages/meeting/Meeting";
 import Index from "./webDesk/pages/meeting/Index";
+import SelectProfile from "./webDesk/Auth/SelectProfile";
+import ForgotPassword from "./webDesk/Auth/ForgotPassword";
+import VerifyOTP from "./webDesk/Auth/VerifyOTP";
+import ResetPassword from "./webDesk/Auth/ResetPassword";
 
-const Splash1 = lazy(() => import("./webDesk/Auth/SelectProfile"));
+const Splash1 = lazy(() => import("./webDesk/Auth/SelectUser"));
 
 const Loading = () => (
   <div
@@ -68,6 +72,10 @@ function App() {
             <ScrollToTopOnNavigation />
             <Routes>
               <Route path="/" element={<Splash1 />} />
+              <Route
+                path="/User-web/Profile-Selection"
+                element={<SelectProfile />}
+              />
               <Route path="/User-web/SignUp" element={<StartSignUp />} />
               <Route path="/SignUpNow" element={<SignUpMain />} />
               <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
@@ -80,6 +88,10 @@ function App() {
                 element={<SignupSubscriptionView />}
               />
               <Route path="/Login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/verify-otp" element={<VerifyOTP />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+
               <Route path="/Dashboard" element={<Layout />}>
                 <Route index element={<Homepage />} />
                 <Route path="Categories" element={<Categories />} />

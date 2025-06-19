@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommNote from "./CommNote";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegisterData } from "../../Redux-config/slices/miscSlice";
 
-const StepOne = ({ setCurrentStep }) => {
-  const [verifyType, setVerifyType] = useState("email");
+const StepOne = ({ setCurrentStep, userIdType, setUserIdType }) => {
+  const [verifyType, setVerifyType] = useState(userIdType);
+  const registerData = useSelector((state) => state.misc.registerData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setRegisterData({ ...registerData, userVerifyType: "email" }));
+  }, []);
 
   const handleProfileSelect = (type) => {
     setVerifyType(type);
+    setUserIdType(type);
+    dispatch(setRegisterData({ ...registerData, userVerifyType: type }));
   };
 
   return (
-    <div className="p-6 md:p-10 max-w-3xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="p-6 md:p-10 max-w-3xl mx-auto">
       <div className="text-center mb-6 ">
         <h2 className="text-3xl font-bold text-gray-900 mb-1">
           Confirm your identity
@@ -81,7 +96,7 @@ const StepOne = ({ setCurrentStep }) => {
           Continue
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

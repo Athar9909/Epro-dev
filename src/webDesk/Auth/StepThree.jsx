@@ -2,6 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import CommNote from "./CommNote";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  SendOTPRegister,
+  VerifyOtp,
+} from "../../Redux-config/slices/authSlice";
+import toast from "react-hot-toast";
 
 const VerificationStep = ({ type = "email", setCurrentStep }) => {
   const {
@@ -15,7 +21,9 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
   const [counter, setCounter] = useState(60);
   const [resendDisabled, setResendDisabled] = useState(true);
   const inputsRef = useRef([]);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const dispatch = useDispatch();
+  const registerData = useSelector((state) => state.misc.registerData);
 
   useEffect(() => {
     if (counter > 0) {
@@ -26,17 +34,61 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
     }
   }, [counter]);
 
-  const handleResend = () => {
-    setCounter(60);
-    setResendDisabled(true);
-    // trigger resend OTP API
-  };
+  const handleResend = async () => {
+    try {
+      const payload = {
+        ...(registerData?.userVerifyType === "email" && {
+          email: registerData?.email,
+        }),
+        ...(registerData?.userVerifyType === "phone" && {
+          countryCode: registerData?.countryCode,
+        }),
+        ...(registerData?.userVerifyType === "phone" && {
+          phoneNumber: registerData?.phone,
+        }),
+      };
 
-  const onSubmit = (data) => {
-    const code = Object.values(data).join("");
-    console.log("OTP submitted:", code);
-    // handle verification
+      const response = await dispatch(SendOTPRegister(payload)).unwrap();
+
+      console.log({ response });
+
+      if (response?.error === false && response?.error_code === 200) {
+        setCounter(60);
+        setResendDisabled(true);
+        toast.success(response?.results?.otp);
+      }
+    } catch (err) {
+      console.error("Verification error:", err);
+    }
   };
+  console.log({ registerData });
+
+  const onSubmit = async (data) => {
+    const code = Object.values(data).join("");
+    try {
+      const payload = {
+        ...(registerData?.userVerifyType === "email" && {
+          email: registerData?.email,
+        }),
+        ...(registerData?.userVerifyType === "phone" && {
+          phoneNumber: registerData?.phone,
+        }),
+        ...(registerData?.userVerifyType === "phone" && {
+          countryCode: registerData?.countryCode,
+        }),
+        otp: code,
+      };
+
+      const response = await dispatch(VerifyOtp(payload)).unwrap();
+
+      if (response?.error === false && response?.error_code === 200) {
+        setIsSuccess(true);
+      }
+    } catch (err) {
+      console.error("Verification error:", err);
+    }
+  };
+  console.log(isSuccess);
 
   const handleInput = (e, index) => {
     const value = e.target.value;
@@ -59,7 +111,41 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
 
   return (
     <div className="p-6 md:p-10 max-w-3xl mx-auto">
-      {!isSuccess ? (
+      {isSuccess ? (
+        <div className="text-center mb-6">
+          <div
+            className={`border p-4 w-40 h-40 flex justify-center items-center mx-auto rounded-full cursor-pointer transition-all duration-300 hover:shadow-md ${"border-[#009EB4] bg-[#009EB420]"}`}>
+            <img
+              src={`/resources/icons/Verified.svg`}
+              alt={`${type}-icon`}
+              className="w-4 h-4 md:w-20 md:h-20"
+            />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-1 mt-4">
+            {`${
+              (type === "email" && "Email") ||
+              (type === "phone" && "Phone Number") ||
+              (type === "nafat" && "Email")
+            } Verified`}
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            Please continue to signup process.{" "}
+          </p>
+          <div className="flex w-[50%] mx-auto">
+            <button
+              type="submit"
+              disabled={!isValid}
+              onClick={() => setCurrentStep((prev) => prev + 1)}
+              className={`custom-btn  ${
+                isValid
+                  ? "bg-[#009EB4] text-white hover:bg-teal-600"
+                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              }`}>
+              Continue
+            </button>
+          </div>
+        </div>
+      ) : (
         <div>
           <div className="text-center mb-6">
             <div
@@ -139,7 +225,6 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
               <button
                 type="submit"
                 disabled={!isValid}
-                onClick={() => setCurrentStep((prev) => prev + 1)}
                 className={`custom-btn ${
                   isValid
                     ? "bg-[#009EB4] text-white hover:bg-teal-600"
@@ -149,36 +234,6 @@ const VerificationStep = ({ type = "email", setCurrentStep }) => {
               </button>
             </div>
           </form>
-        </div>
-      ) : (
-        <div className="text-center mb-6">
-          <div
-            className={`border p-4 w-40 h-40 flex justify-center items-center mx-auto rounded-full cursor-pointer transition-all duration-300 hover:shadow-md ${"border-[#009EB4] bg-[#009EB420]"}`}>
-            <img
-              src={`/resources/icons/Verified.svg`}
-              alt={`${type}-icon`}
-              className="w-4 h-4 md:w-20 md:h-20"
-            />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-1 mt-4">
-            {"Email Verified"}
-          </h2>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">
-            Please continue to signup process.{" "}
-          </p>
-          <div className="flex w-[50%] mx-auto">
-            <button
-              type="submit"
-              disabled={!isValid}
-              onClick={() => setCurrentStep((prev) => prev + 1)}
-              className={`custom-btn  ${
-                isValid
-                  ? "bg-[#009EB4] text-white hover:bg-teal-600"
-                  : "bg-gray-200 text-gray-400 cursor-not-allowed"
-              }`}>
-              Continue
-            </button>
-          </div>
         </div>
       )}
     </div>

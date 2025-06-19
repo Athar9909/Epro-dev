@@ -4,23 +4,20 @@ import CommFoot from "./CommFoot";
 import CommNote from "./CommNote";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "../../Redux-config/common";
+import { useDispatch } from "react-redux";
 import {
   setRegisterData,
-  setRegisterType,
+  setUserType,
 } from "../../Redux-config/slices/miscSlice";
 
-const SelectProfile = () => {
+const SelectUser = () => {
   const [selectedProfile, setSelectedProfile] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const registerData = useSelector((state) => state.misc.registerData);
-
+  const navigate = useNavigate();
   const handleProfileSelect = (type) => {
     setSelectedProfile(type);
-    dispatch(setRegisterType(type));
-    dispatch(setRegisterData({ ...registerData, userIdType: type }));
+    dispatch(setUserType(type));
+    dispatch(setRegisterData({ userType: type }));
   };
 
   return (
@@ -30,12 +27,14 @@ const SelectProfile = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}>
       <CommHead />
-      <div className="bg-[url(/resources/images/banner1.svg)] px-4 md:px-14 pt-2 pb-16 h-[25dvh] md:h-[35dvh]">
-        <button
-          onClick={() => navigate(-1)}
-          className="bg-white text-gray-700 px-4 py-2 rounded-btn mb-8 hover:bg-gray-50 transition-colors">
-          ← Back
-        </button>
+      <div className="bg-[url(resources/images/banner1.svg)] px-4 md:px-14 pt-2 pb-16 h-[25dvh] md:h-[35dvh]">
+        <div className="max-w-full mx-auto mt-6 sm:mt-12">
+          <Link to={-1} className="inline-block">
+            <button className="bg-white text-gray-700 px-4 py-2 rounded-btn mb-8 hover:bg-gray-50 transition-colors">
+              ← Back
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div className="relative -top-25 md:-top-45 sm:-top-35 px-4 min-h-[50vh] h-[60vh]">
@@ -45,18 +44,16 @@ const SelectProfile = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}>
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Select your profile Type
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Select your Sign-In Option
             </h2>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
+              Please Select Your Profile Type
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-6 mb-8">
-            {["individual", "company"].map((type) => (
+            {["buyer", "vendor"].map((type) => (
               <motion.div
                 key={type}
                 whileTap={{ scale: 0.97 }}
@@ -74,7 +71,7 @@ const SelectProfile = () => {
                     className="absolute right-4 top-4">
                     <img
                       className="font-semibold"
-                      src="/resources/icons/rightCricle.svg"
+                      src="resources/icons/rightCricle.svg"
                       alt="Selected"
                     />
                   </motion.span>
@@ -84,12 +81,12 @@ const SelectProfile = () => {
                     <img
                       className="font-semibold"
                       src={
-                        type === "individual"
-                          ? "/resources/icons/people.svg"
-                          : "/resources/icons/building.svg"
+                        type === "buyer"
+                          ? "resources/icons/people.svg"
+                          : "resources/icons/building.svg"
                       }
                       alt={
-                        type === "individual"
+                        type === "vendor"
                           ? "Individual profile"
                           : "Company profile"
                       }
@@ -97,28 +94,27 @@ const SelectProfile = () => {
                   </div>
                 </div>
                 <h3 className="font-normal text-gray-600 text-center mt-2">
-                  Continue as {type === "individual" ? "Individual" : "Company"}
+                  Continue as {type === "buyer" ? "Buyer" : "Vendor"}
                 </h3>
               </motion.div>
             ))}
           </div>
 
-          <CommNote
-            text={"You can add your company details from your profile"}
-          />
+          <CommNote text={"Click On Register Now To Start Sign Up"} />
 
           <div className="flex space-x-4">
             <motion.button
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/Login")}
               className="custom-btn bg-[#009EB4] text-white">
-              Continue as Guest
+              Login
             </motion.button>
             {selectedProfile ? (
               <motion.div whileTap={{ scale: 0.97 }} className="flex-1">
                 <Link
-                  to="/User-web/SignUp"
+                  to="/User-web/Profile-Selection"
                   className="block w-full py-3 px-6 rounded-btn font-medium transition-colors bg-[#F4C63B] text-white hover:bg-gray-800 text-center">
-                  Next Step
+                  Register Now
                 </Link>
               </motion.div>
             ) : (
@@ -137,4 +133,4 @@ const SelectProfile = () => {
   );
 };
 
-export default SelectProfile;
+export default SelectUser;

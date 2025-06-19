@@ -8,11 +8,23 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+  overflow: auto;
+}
+
 @media (max-width: 640px) {
   body,
   html {
     display: none;
   }
+}
+Link {
+  cursor: pointer;
 }
 
 .head {

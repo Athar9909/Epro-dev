@@ -11,7 +11,7 @@ const CommNote = ({ strong, text }) => {
         </div>
         <div className="ml-3">
           <p className="text-sm text-dark">
-            <strong>{strong}:</strong> {text}
+            <strong>Please Note:</strong> {text}
           </p>
         </div>
       </div>
