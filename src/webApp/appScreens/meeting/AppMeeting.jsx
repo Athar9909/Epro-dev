@@ -20,6 +20,8 @@ const AppMeeting = () => {
     const [currentView, setCurrentView] = useState('calendar');
     console.log(currentView)
     const [selectedDate, setSelectedDate] = useState(12);
+    const [activeFilter, setActiveFilter] = useState('price');
+
 
     // Sample data
     const days = [
@@ -152,17 +154,17 @@ const AppMeeting = () => {
                         <div key={time} className="text-sm font-medium text-gray-600">{time}</div>
                     ))}
                 </div>
-                <div className='w-full mb-20'>
-                    <button
-                        onClick={() => setCurrentView('add')}
-                        className='text-[14px] border border-[#009EB4] px-2 py-3 rounded-[10px] w-full bg-[#009EB4] text-white hover:bg-[#00819a] transition-colors flex gap-2 justify-center items-center'
-                    >
-                        <img src='/resources/icons/addWhite.svg' alt='add-icon' />
-                        <span>
-                            Add New Meeting
-                        </span>
-                    </button>
-                </div>
+            </div>
+            <div className='w-[95vw] mx-auto fixed bottom-2 right-0 left-0'>
+                <button
+                    onClick={() => setCurrentView('add')}
+                    className='w-full bg-[#009eb4] text-white py-4 rounded-lg font-medium text-lg flex justify-center items-center gap-2'
+                >
+                    <img src='/resources/icons/addWhite.svg' alt='add-icon' />
+                    <span>
+                        Add New Meeting
+                    </span>
+                </button>
             </div>
         </div>
     );

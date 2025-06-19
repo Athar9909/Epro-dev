@@ -1,7 +1,7 @@
 import { Calendar, ChevronLeft, Clock, FileText, User } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AppNavbar from "../components/AppNavbar";
+import AppNavbar from "../../components/AppNavbar";
 
 const AppCategories = () => {
     const [type, setType] = useState("product")

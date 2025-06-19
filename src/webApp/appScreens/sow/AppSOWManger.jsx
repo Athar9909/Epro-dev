@@ -10,12 +10,19 @@ import {
   ListFilter
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import AppNavbar from '../../components/AppNavbar';
+import AppDocumentFilter from '../../components/AppDocumentFilter';
+import AppPopUp from '../../components/AppPopUp';
+import AppListOfVendors from './vendor/AppListOfVendors';
 
 const AppSOWManager = () => {
   const navigate = useNavigate()
   const [currentView, setCurrentView] = useState('documents');
   const [activeTab, setActiveTab] = useState('My Documents');
   const [activeFilter, setActiveFilter] = useState('SOWs');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+
 
   // Sample data
   const documents = [
@@ -85,166 +92,166 @@ const AppSOWManager = () => {
       </div>
 
       <div className='bg-[#f7f7f7] py-4'>
-      {/* Company Header */}
-      <div className="mx-4 mb-6 p-4 bg-white border border-[#e5e5e5] rounded-lg ">
-        <div className="flex items-center mb-2">
-          <div className="w-12 h-12 bg-[#A8A8A8] rounded mr-3 flex items-center justify-center">
-            <span className="text-xs text-white font-bold">U</span>
-          </div>
-          <div>
-            <div className="font-semibold text-[#272727]">Hindustan Unilever Ltd</div>
-          </div>
-        </div>
-      </div>
-
-      {/* SOW Details */}
-      <div className="mb-6 w-11/12 mx-auto bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-[#272727]">SOW Details</h2>
-          <span className="bg-[#009eb4] text-white px-3 py-1 rounded text-sm">SOW6549874</span>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Document for</div>
-            <div className="font-medium text-[#272727]">Products</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">SOW Title</div>
-            <div className="font-medium text-[#272727]">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">SOW Creator</div>
-            <div className="font-medium text-[#272727]">lorem ipsum</div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-[#A8A8A8] text-sm mb-1">Designation</div>
-              <div className="font-medium text-[#272727]">lorem ipsum</div>
+        {/* Company Header */}
+        <div className="mx-4 mb-6 p-4 bg-white border border-[#e5e5e5] rounded-lg ">
+          <div className="flex items-center mb-2">
+            <div className="w-12 h-12 bg-[#A8A8A8] rounded mr-3 flex items-center justify-center">
+              <span className="text-xs text-white font-bold">U</span>
             </div>
             <div>
-              <div className="text-[#A8A8A8] text-sm mb-1">Department</div>
+              <div className="font-semibold text-[#272727]">Hindustan Unilever Ltd</div>
+            </div>
+          </div>
+        </div>
+
+        {/* SOW Details */}
+        <div className="mb-6 w-11/12 mx-auto bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold text-[#272727]">SOW Details</h2>
+            <span className="bg-[#009eb4] text-white px-3 py-1 rounded text-sm">SOW6549874</span>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Document for</div>
+              <div className="font-medium text-[#272727]">Products</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">SOW Title</div>
               <div className="font-medium text-[#272727]">lorem ipsum</div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Company Details */}
-      <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
-        <h2 className="text-lg font-semibold text-[#272727] mb-4">Company Details</h2>
-
-        <div className="space-y-4">
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Introduction</div>
-            <div className="text-[#272727] text-sm leading-relaxed">
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">SOW Creator</div>
+              <div className="font-medium text-[#272727]">lorem ipsum</div>
             </div>
-          </div>
 
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Company Info</div>
-            <div className="text-[#272727] text-sm leading-relaxed">
-              It is a long established fact that a reader will be distracted by the readable content of a page
-            </div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Objectives</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Scope Description</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Products/Services Table */}
-      <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
-        <h2 className="text-lg font-semibold text-[#272727] mb-4">Products/Services/Rental Services</h2>
-
-        <div className="border border-[#e5e5e5] rounded-lg overflow-hidden">
-          <div className="bg-[#009eb4] text-white grid grid-cols-4 text-sm font-medium">
-            <div className="p-3">Item Code</div>
-            <div className="p-3">Item Description</div>
-            <div className="p-3">Quantity</div>
-            <div className="p-3">Item</div>
-          </div>
-
-          <div className="bg-white">
-            <div className="grid grid-cols-4 text-sm border-b border-[#e5e5e5]">
-              <div className="p-3 text-[#272727]">#2332</div>
-              <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
-              <div className="p-3 text-[#272727]">34</div>
-              <div className="p-3 text-[#272727]">#</div>
-            </div>
-            <div className="grid grid-cols-4 text-sm border-b border-[#e5e5e5]">
-              <div className="p-3 text-[#272727]">#2333</div>
-              <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
-              <div className="p-3 text-[#272727]">56</div>
-              <div className="p-3 text-[#272727]">#</div>
-            </div>
-            <div className="grid grid-cols-4 text-sm">
-              <div className="p-3 text-[#272727]">#2334</div>
-              <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
-              <div className="p-3 text-[#272727]">13</div>
-              <div className="p-3 text-[#272727]">#</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Other Details */}
-      <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
-        <h2 className="text-lg font-semibold text-[#272727] mb-4">Other Details</h2>
-
-        <div className="space-y-4">
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Time Line</div>
-            <div className="text-[#272727] text-sm">Products</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Location</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Assumptions & Constraints</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Payment Terms</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Change Management</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Other Requirements</div>
-            <div className="text-[#272727] text-sm">lorem ipsum</div>
-          </div>
-
-          <div>
-            <div className="text-[#A8A8A8] text-sm mb-1">Appendices & Attachment</div>
-            <div className="flex items-center mt-2">
-              <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center mr-2">
-                <FileText className="w-4 h-4 text-white" />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <div className="text-[#A8A8A8] text-sm mb-1">Designation</div>
+                <div className="font-medium text-[#272727]">lorem ipsum</div>
               </div>
-              <span className="text-[#272727] text-sm">table.jpg</span>
+              <div>
+                <div className="text-[#A8A8A8] text-sm mb-1">Department</div>
+                <div className="font-medium text-[#272727]">lorem ipsum</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+
+        {/* Company Details */}
+        <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
+          <h2 className="text-lg font-semibold text-[#272727] mb-4">Company Details</h2>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Introduction</div>
+              <div className="text-[#272727] text-sm leading-relaxed">
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+              </div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Company Info</div>
+              <div className="text-[#272727] text-sm leading-relaxed">
+                It is a long established fact that a reader will be distracted by the readable content of a page
+              </div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Objectives</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Scope Description</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Products/Services Table */}
+        <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
+          <h2 className="text-lg font-semibold text-[#272727] mb-4">Products/Services/Rental Services</h2>
+
+          <div className="border border-[#e5e5e5] rounded-lg overflow-hidden">
+            <div className="bg-[#009eb4] text-white grid grid-cols-4 text-sm font-medium">
+              <div className="p-3">Item Code</div>
+              <div className="p-3">Item Description</div>
+              <div className="p-3">Quantity</div>
+              <div className="p-3">Item</div>
+            </div>
+
+            <div className="bg-white">
+              <div className="grid grid-cols-4 text-sm border-b border-[#e5e5e5]">
+                <div className="p-3 text-[#272727]">#2332</div>
+                <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
+                <div className="p-3 text-[#272727]">34</div>
+                <div className="p-3 text-[#272727]">#</div>
+              </div>
+              <div className="grid grid-cols-4 text-sm border-b border-[#e5e5e5]">
+                <div className="p-3 text-[#272727]">#2333</div>
+                <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
+                <div className="p-3 text-[#272727]">56</div>
+                <div className="p-3 text-[#272727]">#</div>
+              </div>
+              <div className="grid grid-cols-4 text-sm">
+                <div className="p-3 text-[#272727]">#2334</div>
+                <div className="p-3 text-[#272727]">Lorem ipsum dolor sit amet,</div>
+                <div className="p-3 text-[#272727]">13</div>
+                <div className="p-3 text-[#272727]">#</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Other Details */}
+        <div className="mx-4 mb-6 bg-white border border-[#e5e5e5] p-4 rounded-[10px]">
+          <h2 className="text-lg font-semibold text-[#272727] mb-4">Other Details</h2>
+
+          <div className="space-y-4">
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Time Line</div>
+              <div className="text-[#272727] text-sm">Products</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Location</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Assumptions & Constraints</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Payment Terms</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Change Management</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Other Requirements</div>
+              <div className="text-[#272727] text-sm">lorem ipsum</div>
+            </div>
+
+            <div>
+              <div className="text-[#A8A8A8] text-sm mb-1">Appendices & Attachment</div>
+              <div className="flex items-center mt-2">
+                <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center mr-2">
+                  <FileText className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-[#272727] text-sm">table.jpg</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -254,7 +261,8 @@ const AppSOWManager = () => {
         <button className="flex-1 border border-[#009eb4] text-[#009eb4] py-3 rounded-lg font-medium">
           Save as Draft
         </button>
-        <button className="flex-1 bg-[#009eb4] text-white py-3 rounded-lg font-medium flex items-center justify-center">
+        <button className="flex-1 bg-[#009eb4] text-white py-3 rounded-lg font-medium flex items-center justify-center"
+          onClick={() => setIsSubmit(true)}>
           <Download className="w-4 h-4 mr-2" />
           Submit
         </button>
@@ -336,7 +344,8 @@ const AppSOWManager = () => {
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-[#272727]">Today</h2>
-          <button className="flex items-center text-[#A8A8A8]">
+          <button className="flex items-center text-[#A8A8A8]"
+            onClick={() => setIsFilterOpen(true)}>
             <ListFilter className="w-4 h-4 mr-1" />
             <span className="text-sm">Filter</span>
           </button>
@@ -412,10 +421,10 @@ const AppSOWManager = () => {
 
       {/* Create New SOW Button */}
 
-      <div className=' py-4 bg-white'>
+      <div className=' mx-auto py-4 bg-white'>
         <button
           onClick={() => setCurrentView('create')}
-          className='w-11/12 mx-auto text-[14px] border border-[#009EB4] px-2 py-4 rounded-[10px] bg-[#009EB4] text-white hover:bg-[#00819a] transition-colors flex gap-2 justify-center items-center'
+          className='w-11/12 mx-auto bg-[#009eb4] text-white py-4 rounded-lg font-medium text-lg flex justify-center items-center gap-2'
         >
           <img src='/resources/icons/addWhite.svg' alt='add-icon' />
           <span>
@@ -441,6 +450,48 @@ const AppSOWManager = () => {
     <div className="max-w-xl mx-auto bg-[#f4f4f4]">
       {renderCurrentView()}
 
+      {
+        isFilterOpen && (
+          <div className="fixed inset-0 z-50 lg:hidden">
+            {/* <div className="absolute inset-0 bg-black/60 bg-opacity-50" onClick={() => setIsMobileFilterOpen(false)} /> */}
+            <div className="absolute top-0 left-0 h-full max-w-[100vw] bg-white transition-all ease-in shadow-xl overflow-y-auto hide-scrollbar">
+              <AppDocumentFilter isFilterOpen={true}
+                setIsFilterOpen={setIsFilterOpen} />
+            </div>
+          </div>
+        )
+      }
+
+      {
+        isSubmit && (
+          <AppPopUp
+            type={"success"}
+            popupType={"fullScreenPopup"}
+            url={"/resources/icons/success.svg"}
+            heading={"Request Submitted!"}
+            des={"Your PR #567408 request has been received and is now under review."}
+            // buttons={
+            //   {
+            //     btnOne: "",
+            //     btnTwo: ""
+            //   }
+            // }
+            setIsCompleted={setIsSubmit}
+            btnOne={
+              {
+                text: "Go To Home",
+                reDirect: "/User-App/Homepage"
+              }
+            }
+            btnTwo={
+              {
+                text: "View PRs List",
+                reDirect: ""
+              }
+            } />
+        )
+      }
+
       {/* Navigation for demo purposes */}
       {/* <div className="fixed top-4 right-4 bg-white rounded-lg shadow-lg p-2 z-50">
         <div className="flex space-x-2">
@@ -458,6 +509,14 @@ const AppSOWManager = () => {
           </button>
         </div>
       </div> */}
+
+      {
+        activeTab === 'Vendor Documents' && <AppListOfVendors/>
+      }
+
+
+      {/* Navbar */}
+      <AppNavbar />
     </div>
   );
 };

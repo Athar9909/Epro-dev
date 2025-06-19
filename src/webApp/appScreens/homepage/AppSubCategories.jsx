@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Filter, ChevronLeft, Home, Calendar, FileText, Clock, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import AppPopUp from '../components/AppPopUp';
-import AppNavbar from '../components/AppNavbar';
+import AppPopUp from '../../components/AppPopUp';
+import AppNavbar from '../../components/AppNavbar';
 
 const AppSubCategories = () => {
     const navigate = useNavigate()

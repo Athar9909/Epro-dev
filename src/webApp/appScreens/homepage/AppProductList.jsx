@@ -194,7 +194,7 @@ const AppProductList = () => {
             {/* Bottom Buttons */}
             <div className="fixed bottom-0 left-0 right-0 bg-white shadow-md p-4">
                 <div className='flex gap-4'>
-                    <button className="flex justify-center items-center gap-1 border border-[#009eb4] text-[#009be4] w-[30vw] p-4 rounded-[10px]">
+                    <button className="flex justify-center items-center gap-1 border border-[#009eb4] text-[#009eb4] w-[30vw] p-4 rounded-[10px]">
                         Reset
                     </button>
                     <button className="flex justify-center items-center gap-1 bg-[#009eb4] text-white w-[70vw] p-4 rounded-[10px]">

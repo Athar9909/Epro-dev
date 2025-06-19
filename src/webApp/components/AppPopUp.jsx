@@ -1,34 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AppPopUp = ({
+    popupType,
     type,
     url,
     heading,
     des,
     btnOne,
     btnTwo,
+    buttons,
     setIsCompleted,
     options
 }) => {
     const [selectedOption, setSelectedOption] = React.useState(null);
+    const navigate = useNavigate()
 
     return (
         <>
             {/* Full Screen Popup */}
             {
-                type === "fullScreenPopup" &&
+                popupType === "fullScreenPopup" &&
                 <>
                     <div className="fixed inset-0 h-screen border-gray-200 bg-[#fff] flex items-center justify-center z-50 backdrop-blur-sm">
                         <div className=' flex justify-center items-center flex-col pt-3'>
                             {/* Icon Section */}
                             <div className='flex justify-center items-center'>
-                                {type === "success" && <img className='w-[60px] h-[60px]' src={url} alt="success-icon" />}
+                                {type === "success" && <img className='w-[80px] h-[80px]' src={url} alt="success-icon" />}
                             </div>
 
                             {/* Text Section */}
                             <div className='text-center w-[90vw] mx-auto'>
-                                <h1 className='text-[20px] font-semibold mt-4'>{heading}</h1>
-                                <p className='text-gray-600 text-[14px]'>{des}</p>
+                                <h1 className='text-[26px] font-semibold mt-4'>{heading}</h1>
+                                <p className='text-gray-600 text-[16px]'>{des}</p>
                             </div>
 
                             {/* Options Section */}
@@ -54,29 +58,29 @@ const AppPopUp = ({
                             )}
 
                             {/* Buttons Section */}
-                            <div className='mx-auto mb-2 flex gap-4'>
-                                {
-                                    btnOne &&
+                            <div className={`mx-auto flex gap-4 fixed bottom-0 left-0 right-0 mb-6 px-4`}>
+                                {btnOne && (
                                     <button
-                                        onClick={() => setIsCompleted(false)}
-                                        className='text-xl border border-[#e5e5e5] px-4 py-4 rounded-[10px] mx-auto bg-[#f7f7f7] hover:bg-gray-100 transition-colors fixed bottom-0 right-0 left-0 w-[95vw] mb-6'
+                                        onClick={() => { setIsCompleted && setIsCompleted(true); btnOne?.reDirect && navigate(btnOne?.reDirect) }}
+                                        className={`text-xl border border-[#e5e5e5] px-4 py-4 rounded-[10px] bg-[#f7f7f7] hover:bg-gray-100 transition-colors ${!btnTwo ? 'w-full' : 'w-1/2'
+                                            }`}
                                     >
-                                        {btnOne}
+                                        {btnOne?.text}
                                     </button>
-                                }
-                                {
-                                    btnTwo &&
+                                )}
+                                {btnTwo && (
                                     <button
-                                        onClick={() => setIsCompleted(true)}
-                                        className='text-xl border border-[#009EB4] px-4 py-4 rounded-[10px] mx-auto bg-[#009EB4] text-white hover:bg-[#00819a] transition-colors fixed bottom-0 right-0 left-0 w-[95vw] mb-6'
+                                        onClick={() => { setIsCompleted && setIsCompleted(false); btnTwo?.reDirect && navigate(btnTwo?.reDirect) }}
+                                        className={`text-xl border border-[#009EB4] px-4 py-4 rounded-[10px] bg-[#009EB4] text-white hover:bg-[#00819a] transition-colors ${!btnOne ? 'w-full' : 'w-1/2'
+                                            }`}
                                         disabled={options && !selectedOption}
                                     >
-                                        {btnTwo}
+                                        {btnTwo?.text}
                                     </button>
-                                }
+                                )}
                             </div>
+                            {/* Bottom Indicator */}
                             <div className='bg-[#272727] flex justify-center items-center w-[134px] h-[5px] rounded-[20px] mx-auto fixed bottom-0 right-0 left-0 mb-2'></div>
-
                         </div>
                     </div>
 
@@ -84,7 +88,7 @@ const AppPopUp = ({
             }
             {/* Bottom checkpoint Popup */}
             {
-                type === "bottomPopup" &&
+                popupType === "bottomPopup" &&
                 <div className="fixed inset-0 border-gray-200 bg-[#00000080] flex items-center justify-center z-50 backdrop-blur-sm">
                     <div className='bg-white fixed bottom-0 left-0 right-0 pt-3'>
                         <div className='bg-[#B3BAC2] flex justify-center items-center w-[22px] h-[4px] rounded-[20px] mx-auto'></div>
@@ -144,7 +148,7 @@ const AppPopUp = ({
             }
             {/* Alert Popup */}
             {
-                type === "alert" &&
+                popupType === "alert" &&
                 <div className="fixed inset-0 bg-[#00000080] flex items-center justify-center p-4 z-50 backdrop-blur-sm">
                     <div className="bg-white rounded-[20px] max-w-xl w-full max-h-[90vh] overflow-y-auto hide-scrollbar shadow-2xl" >
                         <div className='m-4'>

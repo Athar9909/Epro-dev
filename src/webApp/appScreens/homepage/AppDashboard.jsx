@@ -21,7 +21,7 @@ import {
     ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AppNavbar from '../components/AppNavbar';
+import AppNavbar from '../../components/AppNavbar';
 
 const AppDashboard = () => {
     const [type, setType] = useState("product")
