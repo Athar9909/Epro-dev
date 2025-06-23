@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
-import { Download } from 'lucide-react';
+import { ChevronLeft, Download } from 'lucide-react';
 
 
 const AppPayment = ({ paymentSuccess, handlePaymentSubmit, isProcessing, selectedPlanData, paymentMethod, setPaymentMethod, privacyPoints, setShowPaymentView, cardData, billingCycle, handleCardInput, saveCard, setSaveCard }) => {
@@ -17,37 +17,43 @@ const AppPayment = ({ paymentSuccess, handlePaymentSubmit, isProcessing, selecte
                     className="min-h-screen">
                     <div className="">
                         <div className="max-w-7xl mx-auto relative">
+                            <div
+                                className="w-10 h-10 bg-white shadow-2xl absolute top-2 left-2 border border-[#e5e5e5] text-[#009eb4] flex justify-center items-center rounded-[10px]"
+                                onClick={() => setShowPaymentView(false)}
+                            >
+                                <ChevronLeft />
+                            </div>
                             <AnimatePresence>
                                 {paymentSuccess ? (
                                     <div className='flex w-full h-screen justify-center items-center'>
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="bg-white rounded-lg p-8 shadow-sm text-center relative top-10 w-11/12 mx-auto">
-                                        <div className="rounded-full flex items-center justify-center mx-auto mb-4">
-                                            <img
-                                                src="/resources/icons/success.svg"
-                                                alt="tick-icon"
-                                                className='w-30 h-30'
-                                            />
-                                        </div>
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                            Successful!
-                                        </h3>
-                                        <p className="text-gray-600 mb-6">
-                                            Your subscription to {selectedPlanData.name} has been
-                                            activated. You have successfully purchase standard
-                                            Subscription Plan. Now You have some new features.
-                                        </p>
-                                        <div className="flex space-x-4 mt-6">
-                                            <button
-                                                type="submit"
-                                                onClick={() => navigate("/User-App/Login")}
-                                                className={`flex-1  custom-btn text-white text-center pri-btn`}>
-                                                Go to Home
-                                            </button>
-                                        </div>
-                                    </motion.div>
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="bg-white rounded-lg p-8 shadow-sm text-center relative top-10 w-11/12 mx-auto">
+                                            <div className="rounded-full flex items-center justify-center mx-auto mb-4">
+                                                <img
+                                                    src="/resources/icons/success.svg"
+                                                    alt="tick-icon"
+                                                    className='w-30 h-30'
+                                                />
+                                            </div>
+                                            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                                Successful!
+                                            </h3>
+                                            <p className="text-gray-600 mb-6">
+                                                Your subscription to {selectedPlanData.name} has been
+                                                activated. You have successfully purchase standard
+                                                Subscription Plan. Now You have some new features.
+                                            </p>
+                                            <div className="flex space-x-4 mt-6">
+                                                <button
+                                                    type="submit"
+                                                    onClick={() => navigate("/User-App/Login")}
+                                                    className={`flex-1  custom-btn text-white text-center pri-btn`}>
+                                                    Go to Home
+                                                </button>
+                                            </div>
+                                        </motion.div>
                                     </div>
                                 ) : (
                                     <motion.div

@@ -3,8 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AppTutorial() {
-    const [step, setStep] = useState(1)
+export default function AppTutorial({step, setStep, setCurrentScreen}) {
     const controls = useAnimation();
     const [showPhone, setShowPhone] = useState(false);
     const navigate = useNavigate()
@@ -30,7 +29,7 @@ export default function AppTutorial() {
         <>
             {
                 step === 1 &&
-                <div className="min-h-screen bg-[#f6f7f9] relative overflow-hidden">
+                <div className="min-h-screen bg-[#f6f7f9] relative overflow-hidden overflow-x-hidden">
                     {/* Animated Stars Background */}
                     {stars.map((star) => (
                         <motion.div
@@ -112,14 +111,14 @@ export default function AppTutorial() {
                         {/* skip button */}
                         <div className='absolute top-4 right-4 bg-[white] text-[#009EB4] px-4 rounded-[10px] py-1'>
                             <button
-                                onClick={() => navigate("/")}>Skip</button>
+                                onClick={() => setCurrentScreen("Language")}>Skip</button>
                         </div>
                     </div>
                 </div>
             }
             {
                 step === 2 &&
-                <div className="min-h-screen bg-[#FF9702] relative overflow-hidden">
+                <div className="min-h-screen bg-[#FF9702] relative overflow-hidden overflow-x-hidden">
                     {/* Animated Stars Background */}
                     {stars.map((star) => (
                         <motion.div
@@ -201,14 +200,14 @@ export default function AppTutorial() {
                         {/* skip button */}
                         <div className='absolute top-4 right-4 bg-[white] text-[#009EB4] px-4 rounded-[10px] py-1'>
                             <button
-                                onClick={() => navigate("/")}>Skip</button>
+                                onClick={() => setCurrentScreen("Language")}>Skip</button>
                         </div>
                     </div>
                 </div>
             }
             {
                 step === 3 &&
-                <div className="min-h-screen bg-[#009eb4] relative overflow-hidden">
+                <div className="min-h-screen bg-[#009eb4] relative overflow-hidden overflow-x-hidden">
                     {/* Animated Stars Background */}
                     {stars.map((star) => (
                         <motion.div
@@ -282,7 +281,7 @@ export default function AppTutorial() {
                             transition={{ duration: 0.8, delay: 1.5 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => navigate("/")}
+                            onClick={() => setCurrentScreen("Language")}
                         >
                             Get Started
                         </motion.button>
@@ -290,7 +289,7 @@ export default function AppTutorial() {
                         {/* skip button */}
                         <div className='absolute top-4 right-4 bg-[white] text-[#009EB4] px-4 rounded-[10px] py-1'>
                             <button
-                                onClick={() => navigate("/")}>Skip</button>
+                                onClick={() => setCurrentScreen("Language")}>Skip</button>
                         </div>
                     </div>
                 </div>

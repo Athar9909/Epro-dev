@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setRegisterData } from '../../Redux-config/slices/miscSlice';
 
 const AppPopUp = ({
     popupType,
@@ -11,10 +13,20 @@ const AppPopUp = ({
     btnTwo,
     buttons,
     setIsCompleted,
-    options
+    options,
+    setCurrentScreen,
+    setSelectedOption,
+    selectedOption
 }) => {
-    const [selectedOption, setSelectedOption] = React.useState(null);
     const navigate = useNavigate()
+    console.log(selectedOption)
+    const dispatch = useDispatch()
+    const registerData = useSelector((state) => state.misc.registerData);
+
+    const handleSubmit = (type) => {
+        dispatch(setRegisterData({ ...registerData, userLanguage: type?.label }));
+        setCurrentScreen("Welcome")
+    };
 
     return (
         <>
@@ -95,25 +107,27 @@ const AppPopUp = ({
 
                         {/* Text Section */}
                         <div className='text-start my-6 w-[90vw] mx-auto'>
-                            <h1 className='text-[16px] font-semibold mt-6'>{heading}</h1>
-                            <p className='text-gray-600'>{des}</p>
+                            <h1 className='text-[26px] font-semibold mt-6'>{heading}</h1>
+                            <p className='text-gray-600 text-[16px]'>{des}</p>
                         </div>
 
                         {/* Options Section */}
                         {options && (
-                            <div className='mb-6 space-y-4 w-[90vw] mx-auto bg-[#B5B8BA1A] rounded-[10px]'>
-                                {Object.entries(options).map(([key, label]) => (
+                            <div className='mb-6 space-y-4 w-[90vw] mx-auto bg-[#B5B8BA1A] rounded-[16px]'>
+                                {options?.map((value, key) => (
                                     <div
                                         key={key}
-                                        className='flex items-center px-4 py-4 w-full hover:bg-gray-50 cursor-pointer'
-                                        onClick={() => setSelectedOption(key)}
+                                        className='flex items-center px-4 py-4 w-full hover:bg-gray-50 cursor-pointer gap-2'
+                                        onClick={() => handleSubmit(value)}
                                     >
-                                        <label className='flex-1 justify-between cursor-pointer text-[14px]'>{label}</label>
+                                        <img src={value?.img} alt={`${value?.img}-icon`} />
+                                        <label className='flex-1 justify-between cursor-pointer text-[18px]'>{value?.label}</label>
                                         <input
                                             type="radio"
                                             name="docType"
-                                            checked={selectedOption === key}
-                                            onChange={() => setSelectedOption(key)}
+                                            checked={selectedOption === value?.label}
+                                            value={value?.label}
+                                            onChange={(e) => setSelectedOption(e.target.value)}
                                             className='h-5 w-5 text-[#009EB4] focus:ring-[#009EB4]'
                                         />
                                     </div>

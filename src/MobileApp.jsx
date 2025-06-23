@@ -26,8 +26,10 @@ import AppEDelivery from "./webApp/appScreens/e-delivery/AppEDelivery";
 import AppDashboard from "./webApp/appScreens/homepage/AppDashboard";
 import AppCategories from "./webApp/appScreens/homepage/AppCategories";
 import AppNavbar from "./webApp/components/AppNavbar";
+import AppSelectProfile from "./webApp/appAuth/AppSelectProfile";
+import { useSelector } from "react-redux";
 
-const Splash1 = lazy(() => import("./webApp/appAuth/AppSelectProfile"));
+const Splash1 = lazy(() => import("./webApp/appAuth/AppSplash"));
 
 const Loading = () => (
   <div
@@ -49,54 +51,72 @@ function ScrollToTopOnNavigation() {
   return null;
 }
 
-function NoPageFound (){
+function NoPageFound() {
   return (
     <>
-    <h1>No Page Found</h1>
-    <AppNavbar/>
+      <h1>No Page Found</h1>
+      <AppNavbar />
     </>
   )
 }
 
+
+
 function MobileApp() {
+  const registerData = useSelector((state) => state.misc.registerData);
+  console.log(registerData)
+
   return (
     <div className={i18next.language === "ar" ? "ArabicRtl" : "App"}>
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
-          <RecoilRoot>
-            <ScrollToTopOnNavigation />
-            <Routes>
-              {/* Private Routes */}
-              <Route path="/" element={<Splash1 />} />
-              <Route path="/User-App/Tutorial" element={<AppTutorial />} />
-              <Route path="/User-App/SignUp" element={<AppStartSignUp />} />
-              <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
-              <Route path="/User-App/Login" element={<AppLogin />} />
-              <Route path="/User-App/Forgot-Password" element={<AppForgetPassword />} />
-              <Route path="/User-App/Verify-OTP" element={<AppOtpVerification />} />
-              <Route path="/User-App/Reset-Password" element={<AppResetPassword />} />
-              {/* Public Routes */}
-              {/* Homepage */}
-              <Route path="/User-App/Homepage" element={<AppDashboard />} />
-              <Route path="/User-App/Categories" element={<AppCategories />} />
-              <Route path="/User-App/Categories/Sub-Categories" element={<AppSubCategories />} />
-              <Route path="/User-App/Products" element={<AppProductList />} />
-              <Route path="/User-App/Product-Details" element={<AppProductDetails />} />
-              {/* Meeting */}
-              <Route path="/User-App/Meeting" element={<AppMeeting />} />
-              {/* SOW */}
-              <Route path="/User-App/Documents" element={<AppSOWManager />} />
-              {/* Vendor */}
-              <Route path="/User-App/Vendor-Details" element={<AppVendorDetails />} />
-              <Route path="/User-App/Chat-Interface" element={<AppChatInterface />} />
-              {/* Vendor Proposal */}
-              <Route path="/User-App/Evaluated-Vendors-Proposals" element={<AppVendorProposal />} />
-              {/* E-Delivery Note */}
-              <Route path="/User-App/E-Delivery-Note" element={<AppEDelivery />} />
-              <Route path="/User-App/Track-Delivery-Order" element={<AppTrackOrder />} />
-              <Route path="*" element={<NoPageFound />} />
-            </Routes>
-          </RecoilRoot>
+          <Toaster
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable={false}
+            pauseOnHover={false}
+            toastClassName="custom-toast"
+            bodyClassName="custom-toast-body"
+            progressClassName="custom-toast-progress"
+            transition="bounce"
+          />
+          <ScrollToTopOnNavigation />
+          <Routes>
+            {/* Private Routes */}
+            <Route path="/" element={<Splash1 />} />
+            <Route path="/User-App/Profile-Selection" element={<AppSelectProfile />} />
+            <Route path="/User-App/SignUp" element={<AppStartSignUp />} />
+            <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
+            <Route path="/User-App/Login" element={<AppLogin />} />
+            <Route path="/User-App/Forgot-Password" element={<AppForgetPassword />} />
+            <Route path="/User-App/Verify-OTP" element={<AppOtpVerification />} />
+            <Route path="/User-App/Reset-Password" element={<AppResetPassword />} />
+            {/* Public Routes */}
+            {/* Homepage */}
+            <Route path="/User-App/Homepage" element={<AppDashboard />} />
+            <Route path="/User-App/Categories" element={<AppCategories />} />
+            <Route path="/User-App/Categories/Sub-Categories" element={<AppSubCategories />} />
+            <Route path="/User-App/Products" element={<AppProductList />} />
+            <Route path="/User-App/Product-Details" element={<AppProductDetails />} />
+            {/* Meeting */}
+            <Route path="/User-App/Meeting" element={<AppMeeting />} />
+            {/* SOW */}
+            <Route path="/User-App/Documents" element={<AppSOWManager />} />
+            {/* Vendor */}
+            <Route path="/User-App/Vendor-Details" element={<AppVendorDetails />} />
+            <Route path="/User-App/Chat-Interface" element={<AppChatInterface />} />
+            {/* Vendor Proposal */}
+            <Route path="/User-App/Evaluated-Vendors-Proposals" element={<AppVendorProposal />} />
+            {/* E-Delivery Note */}
+            <Route path="/User-App/E-Delivery-Note" element={<AppEDelivery />} />
+            <Route path="/User-App/Track-Delivery-Order" element={<AppTrackOrder />} />
+            <Route path="*" element={<NoPageFound />} />
+          </Routes>
         </Suspense>
       </BrowserRouter>
     </div>

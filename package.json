@@ -14,7 +14,7 @@
     "@tailwindcss/postcss": "^4.1.6",
     "@tailwindcss/vite": "^4.1.6",
     "animate.css": "^4.1.1",
-    "axios": "^1.9.0",
+    "axios": "^1.10.0",
     "e-pro-web": "file:",
     "framer-motion": "^12.16.0",
     "i18next": "^25.2.1",

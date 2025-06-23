@@ -62,7 +62,7 @@ const StepFour = ({ setCurrentStep }) => {
     control,
     getValues,
   } = useForm({
-    mode: "onChange",
+    mode: "onBlur",
     defaultValues: {
       ...registerData,
       email: registerData?.email || "",

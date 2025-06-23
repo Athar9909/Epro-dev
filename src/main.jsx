@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import MobileApp from "./MobileApp.jsx";
 import "./index.css"; // always load
+import { Provider } from "react-redux";
+import store from "./Redux-config/store.js"
 
 function Root() {
   const isMobile = window.innerWidth <= 640;
@@ -12,7 +14,7 @@ function Root() {
       // Dynamically load Style.css only for larger screens
       import("./assets/css/Style.css");
     }
-    else{
+    else {
       import("./assets/css/appStyle.css");
 
     }
@@ -22,7 +24,7 @@ function Root() {
 }
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <Provider store={store}>
     <Root />
-  </StrictMode>
+  </Provider>
 );

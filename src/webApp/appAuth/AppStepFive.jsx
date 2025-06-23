@@ -110,6 +110,16 @@ const AppStepFive = ({ setCurrentStep, setVarHeight }) => {
   ];
 
   const selectedPlanData = plans.find((plan) => plan.id === selectedPlan);
+  console.log(selectedPlanData)
+
+  const handleSubmit = () => {
+    if (selectedPlanData?.id === "free") {
+      navigate("/User-App/login")
+    }
+    else {
+      setShowPaymentView(true);
+    }
+  }
 
   return (
     <div className="min-h-screen rounded-[16px] ">
@@ -164,10 +174,8 @@ const AppStepFive = ({ setCurrentStep, setVarHeight }) => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    setShowPaymentView(true);
-                    setVarHeight("150vh");
-                  }}
+                  onClick={handleSubmit}
+                  disabled={!selectedPlan}
                   className="flex-1 px-6 py-3 bg-[#009EB4] text-white rounded-md font-medium hover:bg-opacity-90 transition-colors">
                   Continue
                 </motion.button>
