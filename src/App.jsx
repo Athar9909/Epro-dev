@@ -11,11 +11,11 @@ import SignupSubscriptionView from "./webDesk/Auth/SignupSubscriptionView";
 import Homepage from "./webDesk/pages/Homepage";
 import ProductListing from "./webDesk/pages/product/ProductListing";
 import ProductDetail from "./webDesk/pages/product/ProductDetails";
-import Categories from "./webDesk/pages/product/Categories";
+import Categories from "./webDesk/pages/categories/Categories";
 import Layout from "./webDesk/components/Layout";
 import NoPageFound from "./webDesk/pages/NoPageFound";
 import Login from "./webDesk/auth/Login";
-import SubCategories from "./webDesk/pages/product/SubCategories";
+import SubCategories from "./webDesk/pages/categories/SubCategories";
 import VendorDetails from "./webDesk/pages/vendor/VendorDetails";
 import VendorProfile from "./webDesk/pages/vendor/VendorProfile";
 import SOW from "./webDesk/pages/document/SOW";
@@ -25,6 +25,7 @@ import SelectProfile from "./webDesk/Auth/SelectProfile";
 import ForgotPassword from "./webDesk/Auth/ForgotPassword";
 import VerifyOTP from "./webDesk/Auth/VerifyOTP";
 import ResetPassword from "./webDesk/Auth/ResetPassword";
+import VendorComp from "./webDesk/pages/vendor/VendorComp";
 
 const Splash1 = lazy(() => import("./webDesk/Auth/SelectUser"));
 
@@ -107,6 +108,9 @@ function App() {
                   path="Categories/Sub-Categories/Product-Details"
                   element={<ProductDetail />}
                 />
+
+                <Route path="Vendors" element={<VendorComp />} />
+
                 <Route path="Vendor-Details" element={<VendorDetails />} />
                 <Route
                   path="Vendor-Details/Vendor-Profile"

@@ -6,6 +6,7 @@ const initialState = {
   registerData: {
     userVerifyType: "email",
   },
+  DynamicRoutes: [],
 };
 
 const miscSlice = createSlice({
@@ -21,6 +22,9 @@ const miscSlice = createSlice({
     setRegisterData: (state, action) => {
       state.registerData = action.payload;
     },
+    setDynamicRoutes: (state, action) => {
+      state.DynamicRoutes = action.payload;
+    },
     clearMisc: (state) => {
       state.userType = "";
       state.registerType = "";
@@ -34,6 +38,7 @@ export const {
   clearMisc,
   setRegisterType,
   setRegisterData,
+  setDynamicRoutes,
   registerData,
 } = miscSlice.actions;
 export default miscSlice.reducer;

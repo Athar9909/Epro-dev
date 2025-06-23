@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { countryCodes } from "../Auth/CountryCodes";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegisterData } from "../../Redux-config/slices/miscSlice";
+import { set } from "react-hook-form";
 
-const CountryCodeDrop = ({
-  selectedCode,
-  onSelect,
-  register,
-  validation,
-  error,
-}) => {
+const CountryCodeDrop = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCountries, setFilteredCountries] = useState(countryCodes);
-
+  const [countryCode, setCountryCode] = useState(null);
+  const dispatch = useDispatch();
+  const registerData = useSelector((state) => state.misc.registerData);
   useEffect(() => {
     if (!searchTerm.trim()) {
       setFilteredCountries(countryCodes);
@@ -32,9 +31,16 @@ const CountryCodeDrop = ({
   }, [searchTerm]);
 
   const handleSelect = (code) => {
-    onSelect(code);
+    console.log(code);
+    dispatch(
+      setRegisterData({
+        ...registerData,
+        countryCode: code,
+      })
+    );
     setIsDropdownOpen(false);
     setSearchTerm("");
+    setCountryCode(code);
   };
 
   return (
@@ -43,10 +49,8 @@ const CountryCodeDrop = ({
         <button
           type="button"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none transition text-left flex items-center justify-between ${
-            error ? "border-red-500" : "border-gray-300"
-          }`}>
-          <span>{selectedCode}</span>
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none transition text-left flex items-center justify-between ${"border-gray-300"}`}>
+          <span>{countryCode}</span>
           <svg
             className={`w-4 h-4 ml-2 transition-transform ${
               isDropdownOpen ? "transform rotate-180" : ""
@@ -63,7 +67,7 @@ const CountryCodeDrop = ({
             />
           </svg>
         </button>
-        <input type="hidden" {...register} />
+        <input type="hidden" />
       </div>
 
       {isDropdownOpen && (
@@ -84,7 +88,7 @@ const CountryCodeDrop = ({
                 <li
                   key={country.dial_code}
                   className={`px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center ${
-                    selectedCode === country.dial_code ? "bg-blue-50" : ""
+                    countryCode === country.dial_code ? "bg-blue-50" : ""
                   }`}
                   onClick={() => handleSelect(country.dial_code)}>
                   <span className="mr-2">{country.flag}</span>
@@ -100,8 +104,6 @@ const CountryCodeDrop = ({
           </ul>
         </div>
       )}
-
-      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
     </div>
   );
 };
