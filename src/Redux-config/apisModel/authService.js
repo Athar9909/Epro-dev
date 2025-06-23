@@ -11,7 +11,7 @@ const login = async (credentials) => {
 };
 
 const signup = async (userData) => {
-  const data = await apiService.post("/user/signups", userData);
+  const data = await apiService.post("/user/signup", userData);
   return data;
 };
 

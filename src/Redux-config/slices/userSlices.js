@@ -76,7 +76,7 @@ const userSlice = createSlice({
       })
       .addCase(GetMainUserData.fulfilled, (state, action) => {
         state.loading = false;
-        state.userData = action.payload; // Use payload instead of the whole action
+        state.userData = action.payload;
         state.message =
           action.payload?.message || "User data fetched successfully";
       })

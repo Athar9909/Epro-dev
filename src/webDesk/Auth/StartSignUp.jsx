@@ -55,7 +55,7 @@ const StepIndicator = React.memo(({ steps, currentStep }) => (
 ));
 
 const StartSignUp = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(4);
   const [varHeight, setVarHeight] = useState("100vh");
   const [userIdType, setUserIdType] = useState("email");
 

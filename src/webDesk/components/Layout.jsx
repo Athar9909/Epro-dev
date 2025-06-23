@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
+import RouteNav from "./RouteNav";
 const Layout = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false);
@@ -58,6 +59,7 @@ const Layout = () => {
       {/* Main Content */}
       <div className={`flex-1 flex flex-col overflow-hidden`}>
         <Header onMenuClick={() => setMobileSidebarOpen(true)} />
+        <RouteNav onMenuClick={() => setMobileSidebarOpen(true)} />
         <main className="flex-1 overflow-y-auto p-4 bg-[#f6f7f9] mt-2">
           <Outlet />
         </main>

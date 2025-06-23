@@ -31,6 +31,8 @@ export default function Sidebar({
       label: "Categories",
     },
     {
+      path: "/Dashboard/Vendors",
+
       icon: "/resources/icons/users.svg",
       label: "Vendors",
       //   submenu: [
