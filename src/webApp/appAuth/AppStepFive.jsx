@@ -114,7 +114,7 @@ const AppStepFive = ({ setCurrentStep, setVarHeight }) => {
 
   const handleSubmit = () => {
     if (selectedPlanData?.id === "free") {
-      navigate("/User-App/login")
+      navigate("/login")
     }
     else {
       setShowPaymentView(true);

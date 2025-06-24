@@ -17,7 +17,7 @@ const AppWelcome = ({ setCurrentScreen }) => {
         <div className="flex flex-col gap-4">
           <button className="pri-btn"
             onClick={() => setCurrentScreen("SelectProfile")}>Register</button>
-          <Link to="/User-App/Login" className="pri-btn text-center">Login</Link>
+          <Link to="/Login" className="pri-btn text-center">Login</Link>
         </div>
         <div className="flex justify-between items-center my-4">
           <hr className="text-white w-1/4" />

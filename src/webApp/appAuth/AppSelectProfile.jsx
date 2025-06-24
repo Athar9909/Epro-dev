@@ -122,7 +122,7 @@ const AppSelectProfile = () => {
                     {/* Action Buttons */}
                     <div className="flex">
                         <button className={`pri-btn text-center ${!userType ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
-                            onClick={() => navigate("/User-App/SignUp")}
+                            onClick={() => navigate("/User-Web/SignUp")}
                             disabled={!userType}>
                             Continue
                         </button>

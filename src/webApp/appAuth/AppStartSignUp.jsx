@@ -16,8 +16,7 @@ const AppStartSignUp = () => {
     { id: 2, title: "STEP 02", label: "Email" },
     { id: 3, title: "STEP 03", label: "Verification" },
     { id: 4, title: "STEP 04", label: "Complete" },
-    // { id: 5, title: "STEP 05", label: "Company-Register" },
-    { id: 6, title: "STEP 06", label: "Subscription" },
+    { id: 5, title: "STEP 05", label: "Subscription" },
   ];
 
   const handleClick = () => {
@@ -25,50 +24,20 @@ const AppStartSignUp = () => {
       setCurrentStep(prev => prev - 1);
       // console.log(currentStep)
     } else {
-      // Here you can add navigation logic to go back to the previous page
-      // For example, if using React Router:
       navigate(-1);
       // console.log("Navigate to previous page");
     }
   }
-  // console.log(currentStep)
+  console.log("currentStep:", currentStep)
 
   const [varHeight, setVarHeight] = useState("100vh");
-
-  const StepIndicator = ({ steps, currentStep }) => (
-    <div className="flex justify-start items-center gap-4 flex-wrap ">
-      {steps.map((step, index) => (
-        <React.Fragment key={step.id}>
-          <div className="flex flex-row items-center gap-2">
-            <div
-              className={`w-6 h-6 relative top-[3px]  rounded-full flex items-center justify-center text-sm font-semibold mb-1 ${step.id === currentStep
-                ? "bg-[#009EB4] text-white shadow-lg scale-110"
-                : step.id < currentStep
-                  ? "bg-[#009EB4] text-white"
-                  : "bg-gray-200 text-gray-500 "
-                }`}>
-              {step.id < currentStep ? <Check size={16} /> : step.id}
-            </div>
-            <span
-              className={`text-[14px] font-medium  ${step.id === currentStep ? "text-[#009EB4]" : "text-gray-400"
-                }`}>
-              {step.title}
-            </span>
-          </div>
-          {index < steps.length - 1 && (
-            <div className={`h-[2px] flex-1 w-10 max-w-[40px] bg-[#009EB4]`} />
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-[#eaf9f6] app-container">
       <div
         className="max-w-[640px] w-full mx-auto">
         {
-          currentStep < 6 && <div
+          currentStep < 4 && <div
             className="w-10 h-10 bg-white shadow-2xl absolute top-4 left-6 text-[#009eb4] flex justify-center items-center rounded-[10px]"
             onClick={handleClick}
           >
@@ -76,10 +45,6 @@ const AppStartSignUp = () => {
           </div>
         }
 
-
-        {/* <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg">
-          <StepIndicator steps={steps} currentStep={currentStep} />
-        </div> */}
         {/* "Choose-Identity" */}
         {currentStep === 1 && <AppStepOne
           currentStep={currentStep}
@@ -95,7 +60,7 @@ const AppStartSignUp = () => {
         {/* {"Register Form"} */}
         {currentStep === 4 && <AppStepFour setCurrentStep={setCurrentStep} />}
         {/* {currentStep === 5 && <AppStepFourTwo setCurrentStep={setCurrentStep} />} */}
-        {currentStep === 6 && (
+        {currentStep === 5 && (
           <AppStepFive
             setCurrentStep={setCurrentStep}
             setVarHeight={setVarHeight}

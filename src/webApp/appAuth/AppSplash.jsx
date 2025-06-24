@@ -138,7 +138,7 @@ const AppSplash = () => {
                   className={`pri-btn text-center ${
                     !selectedProfile ? "cursor-not-allowed opacity-80" : "cursor-pointer"
                   }`}
-                  onClick={() => navigate("/User-App/Profile-Selection")}
+                  onClick={() => navigate("/User-Web/Profile-Selection")}
                   disabled={!selectedProfile}
                 >
                   Continue

@@ -480,7 +480,7 @@ const AppSOWManager = () => {
             btnOne={
               {
                 text: "Go To Home",
-                reDirect: "/User-App/Homepage"
+                reDirect: "/Dashboard"
               }
             }
             btnTwo={

@@ -48,7 +48,7 @@ const AppPayment = ({ paymentSuccess, handlePaymentSubmit, isProcessing, selecte
                                             <div className="flex space-x-4 mt-6">
                                                 <button
                                                     type="submit"
-                                                    onClick={() => navigate("/User-App/Login")}
+                                                    onClick={() => navigate("/Login")}
                                                     className={`flex-1  custom-btn text-white text-center pri-btn`}>
                                                     Go to Home
                                                 </button>

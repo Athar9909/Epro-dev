@@ -64,7 +64,7 @@ export default function AppLogin() {
 
             const response = await dispatch(loginUser(payload)).unwrap();
             if (response?.error === false && response?.error_code === 200) {
-                navigate("/User-App/Homepage");
+                navigate("/Dashboard");
             }
         } catch (err) {
             console.error("Login error:", err);
@@ -311,7 +311,7 @@ export default function AppLogin() {
                                 <span className="ml-2 text-sm text-gray-[#272727]">Keep me logged In</span>
                             </div>
                             <Link
-                                to="/User-App/Forgot-Password"
+                                to="/Forgot-Password"
                                 className="text-sm text-[#009EB4] hover:underline"
                             >
                                 Forgot password?
@@ -322,7 +322,7 @@ export default function AppLogin() {
                         <button
                             type="submit"
                             disabled={!isValid}
-                            className={`w-full inline-block text-center bg-[#009EB4] text-white py-4 px-4 rounded-[10px]  focus:outline-none transition-colors font-medium ${!isValid ? 'opacity-50 cursor-not-allowed' : ''
+                            className={`w-full inline-block text-center bg-[#009EB4] text-white py-4 px-4 rounded-[10px]  focus:outline-none transition-colors font-medium ${!isValid ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                                 }`}
                         >
                             Login

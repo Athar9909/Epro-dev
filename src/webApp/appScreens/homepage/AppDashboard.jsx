@@ -20,33 +20,34 @@ import {
     Bell,
     ArrowRight
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppNavbar from '../../components/AppNavbar';
 
 const AppDashboard = () => {
+    const navigate = useNavigate()
     const [type, setType] = useState("product")
     const [currentView, setCurrentView] = useState('home');
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const sidebarItems = [
-        { icon: <img src="/resourcesApp/iconsApp/business.svg" alt='business-icon' />, label: 'Business Profile', section: 'ACCOUNT' },
-        { icon: <img src="/resourcesApp/iconsApp/subs.svg" alt='subscription-icon' />, label: 'My Subscription', section: 'ACCOUNT' },
-        { icon: <img src="/resourcesApp/iconsApp/userlogo.svg" alt='user-icon' />, label: 'My Sub-User', section: 'ACCOUNT' },
-        { icon: <img src="/resourcesApp/iconsApp/offerLogo.svg" alt='offer-icon' />, label: 'My Offers', section: 'ACCOUNT' },
-        { icon: <img src="/resourcesApp/iconsApp/bagLogo.svg" alt='bag-icon' />, label: 'My Order', section: 'ACCOUNT' },
-        { icon: <img src="/resourcesApp/iconsApp/calenderLogo.svg" alt='offer-icon' />, label: 'Procurement Calendar', section: 'GENERAL SETTING' },
-        { icon: <img src="/resourcesApp/iconsApp/heartLogo.svg" alt='heart-icon' />, label: 'My Favorites', section: 'GENERAL SETTING' },
-        { icon: <img src="/resourcesApp/iconsApp/disputeLogo.svg" alt='dispute-icon' />, label: 'Dispute Case', section: 'GENERAL SETTING' },
-        { icon: <img src="/resourcesApp/iconsApp/socialLogo.svg" alt='social-icon' />, label: 'Social Media Link', section: 'GENERAL SETTING' },
-        { icon: <img src="/resourcesApp/iconsApp/newsLogo.svg" alt='news-icon' />, label: 'Latest News', section: 'GENERAL SETTING' },
-        { icon: <img src="/resourcesApp/iconsApp/currencyLogo.svg" alt='currency-icon' />, label: 'Currency', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/settingLogo.svg" alt='setting-icon' />, label: 'Settings', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/absLogo.svg" alt='abs-icon' />, label: 'About Us', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/docLogo.svg" alt='doc-icon' />, label: 'Terms & Conditions', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/helpLogo.svg" alt='help-icon' />, label: 'Help & Support', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/privcyLogo.svg" alt='privacy-icon' />, label: 'Privacy Policy', section: 'OTHERS' },
-        { icon: <img src="/resourcesApp/iconsApp/logout.svg" alt='signout-icon' />, label: 'Sign Out', section: 'MORE ABOUT ACCOUNT' }
+        { route:"/profile",icon: <img src="/resourcesApp/iconsApp/business.svg" alt='business-icon' />, label: 'Business Profile', section: 'ACCOUNT' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/subs.svg" alt='subscription-icon' />, label: 'My Subscription', section: 'ACCOUNT' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/userlogo.svg" alt='user-icon' />, label: 'My Sub-User', section: 'ACCOUNT' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/offerLogo.svg" alt='offer-icon' />, label: 'My Offers', section: 'ACCOUNT' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/bagLogo.svg" alt='bag-icon' />, label: 'My Order', section: 'ACCOUNT' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/calenderLogo.svg" alt='offer-icon' />, label: 'Procurement Calendar', section: 'GENERAL SETTING' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/heartLogo.svg" alt='heart-icon' />, label: 'My Favorites', section: 'GENERAL SETTING' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/disputeLogo.svg" alt='dispute-icon' />, label: 'Dispute Case', section: 'GENERAL SETTING' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/socialLogo.svg" alt='social-icon' />, label: 'Social Media Link', section: 'GENERAL SETTING' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/newsLogo.svg" alt='news-icon' />, label: 'Latest News', section: 'GENERAL SETTING' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/currencyLogo.svg" alt='currency-icon' />, label: 'Currency', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/settingLogo.svg" alt='setting-icon' />, label: 'Settings', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/absLogo.svg" alt='abs-icon' />, label: 'About Us', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/docLogo.svg" alt='doc-icon' />, label: 'Terms & Conditions', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/helpLogo.svg" alt='help-icon' />, label: 'Help & Support', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/privcyLogo.svg" alt='privacy-icon' />, label: 'Privacy Policy', section: 'OTHERS' },
+        { route:"/",icon: <img src="/resourcesApp/iconsApp/logout.svg" alt='signout-icon' />, label: 'Sign Out', section: 'MORE ABOUT ACCOUNT' }
     ];
 
     const categories = [
@@ -107,6 +108,7 @@ const AppDashboard = () => {
                                                     <div
                                                         key={index}
                                                         className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer"
+                                                        onClick={()=>navigate(`${item?.route}`)}
                                                     >
                                                         <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                                                             {item.icon}

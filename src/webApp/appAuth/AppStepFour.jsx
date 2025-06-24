@@ -68,24 +68,25 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
       phoneNumber: registerData?.phone || "",
       countryCode: registerData?.countryCode || "",
       // Company required fields
-      companyName: "",
-      companyTagline: "",
-      companyEmail: "",
-      companyCountryCode: '',
-      companyPhone: '',
-      foundingDate: "",
-      address: "",
-      city: "",
-      country: "",
-      zipCode: "",
-      iktvaMembers: "",
-      websiteLink: "",
-      cr: "",
+      compName: "",
+      compTagline: "",
+      compEmail: "",
+      compCountryCode: '',
+      compPhone: '',
+      compFoundingDate: "",
+      compAddress: "",
+      compCity: "",
+      compCountry: "",
+      compPincode: "",
+      compMembershipNo: "",
+      compLink: "",
+      compCR: "",
       compDescription: "",
       projectName: "",
       projectDescription: "",
       completionDate: "",
       customerProjectName: "",
+      compimage: ''
     },
   });
   // console.log(formState)
@@ -153,169 +154,141 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
     }
     else {
       setValue('countryCode', selectedCountryCode)
-      setValue('companyCountryCode', selectedCompanyCountryCode)
+      setValue('compCountryCode', selectedCompanyCountryCode)
     }
   }, [registerData, setValue]);
 
-  // const onSubmit = async (data) => {
-  //   console.log(data);
 
-  //   // Handle multi-step progression for company registration
-  //   if (registerData?.userIdType === "Company" && step < 3) {
-  //     setStep(prev => prev + 1);
-  //     return;
-  //   }
 
-  //   const formData = new FormData();
-  //   const allData = { ...registerData, ...data };
+  const onSubmit = async (data) => {
+  console.log(data);
 
-  //   // Base fields for all users
-  //   const baseFields = [
-  //     "firstName",
-  //     "lastName",
-  //     "email",
-  //     "password",
-  //     "about",
-  //     "phoneNumber",
-  //     "countryCode",
-  //     "accountType",
-  //   ];
+  // Handle multi-step progression for company registration
+  if (registerData?.userIdType === "Company" && step < 3) {
+    setStep(prev => prev + 1);
+    return;
+  }
 
-  //   // Company-specific fields
-  //   const companyFields = [
-  //     "compName",
-  //     "compTagline",
-  //     "compEmail",
-  //     "compFoundingDate",
-  //     "compAddress",
-  //     "compCity",
-  //     "compCountry",
-  //     "compZipCode",
-  //     "type",
-  //     "compMembershipNo",
-  //     "compSize",
-  //     "compIndustry",
-  //     "compLink",
-  //     "compCR",
-  //   ];
+  const formData = new FormData();
+  const allData = { ...registerData, ...data };
 
-  //   // Append accountType from registerData
-  //   if (registerData?.userIdType) {
-  //     formData.append("accountType", registerData.userIdType);
-  //   }
+  // Base fields for all users
+  const baseFields = [
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "about",
+    "phoneNumber",
+    "countryCode",
+  ];
 
-  //   // Append all base fields
-  //   baseFields.forEach(field => {
-  //     if (allData[field] !== undefined) {
-  //       formData.append(field, allData[field]);
-  //     }
-  //   });
+  // Append accountType
+  if (registerData?.userIdType) {
+    formData.append("accountType", registerData.userIdType);
+  }
 
-  //   // Handle profile image
-  //   if (image) {
-  //     const profileImageFile = base64ToFile(image, "profile.png");
-  //     formData.append("profileImage", profileImageFile);
-  //   }
+  // Append all base fields
+  baseFields.forEach(field => {
+    if (allData[field] !== undefined && allData[field] !== null) {
+      formData.append(field, allData[field]);
+    }
+  });
 
-  //   // Company-specific data handling
-  //   if (registerData?.userIdType === "Company") {
-  //     // Append all company fields
-  //     companyFields.forEach(field => {
-  //       console.log("field:", field)
-  //       if (allData[field] !== undefined) {
-  //         // Handle special cases for dropdown values
-  //         if (field === "compName") {
-  //           formData.append("compName", allData?.companyName);
-  //         }
-  //         else if (field === "compEmail") {
-  //           formData.append("compEmail", allData?.companyEmail);
-  //         }
-  //         else if (field === "type") {
-  //           formData.append("type", selectedType);
-  //         }
-  //         else if (field === "compIndustry") {
-  //           formData.append("compIndustry", selectedIndustry);
-  //         }
-  //         else if (field === "compSize") {
-  //           formData.append("compSize", selectedCompanySize);
-  //         }
-  //         else if (field === "compZipCode") {
-  //           formData.append("compZipCode", allData?.zipCode)
-  //         }
-  //         else if (field === "compMembershipNo") {
-  //           formData.append("compMembershipNo", allData?.iktvaMembers)
-  //         }
-  //         else if (field === "compCR") {
-  //           formData.append("compCR", allData?.cr)
-  //         }
-  //         else if (field === "compLink") {
-  //           formData.append("compLink", allData?.websiteLink)
-  //         }
-  //         else if (field === "compAddress") {
-  //           formData.append("compAddress", allData?.address)
-  //         }
-  //         else if (field === "compCountry") {
-  //           formData.append("compCountry", allData?.country)
-  //         }
-  //         else if (field === "compCity") {
-  //           formData.append("compCity", allData?.city)
-  //         }
-  //         else if (field === "compFoundingDate") {
-  //           formData.append("compFoundingDate", allData?.foundingDate)
-  //         }
-  //         else if (field === "compTagline") {
-  //           formData.append("compTagline", allData?.companyTagline)
-  //         }
-  //         else {
-  //           formData.append(field, allData[field]);
-  //         }
-  //       }
-  //     });
+  // Handle profile images
+  if (image) {
+    const profileImageFile = base64ToFile(image, "profile.png");
+    formData.append("profileImage", profileImageFile);
+  }
+  if (image2) {
+    const companyImageFile = base64ToFile(image2, "company.png");
+    formData.append("compImage", companyImageFile);
+  }
 
-  //     // Handle trade license
-  //     if (allData.tradeLicense?.[0]) {
-  //       formData.append("comptradelicense", allData.tradeLicense[0]);
-  //     }
+  // Company-specific data handling
+  if (registerData?.userIdType === "Company") {
+    // Append all company fields from form data
+    const companyFields = [
+      "compName",
+      "compTagline",
+      "compEmail",
+      "compCountryCode",
+      "compPhone",
+      "compAddress",
+      "compCity",
+      "compCountry",
+      "compPincode",
+      "compMembershipNo",
+      "compLink",
+      "compCR",
+      "compDescription"
+    ];
 
-  //     // Handle projects data if uploading now
-  //     if (uploadOption === 'now' && projects.length > 0) {
-  //       const projectData = projects.map((project, index) => ({
-  //         projectName: project.name,
-  //         projectDescription: project.description,
-  //         projectDate: project.completionDate,
-  //         projectFile: project.file ? `projectFile_${index}` : null
-  //       }));
+    companyFields.forEach(field => {
+      if (allData[field] !== undefined && allData[field] !== null) {
+        formData.append(field, allData[field]);
+      }
+    });
 
-  //       formData.append("compProject", JSON.stringify(projectData));
+    // Format founding date to yyyy/mm/dd
+    if (allData.compFoundingDate) {
+      const date = new Date(allData.compFoundingDate);
+      const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+      formData.append("compFoundingDate", formattedDate);
+    }
 
-  //       projects.forEach((project, index) => {
-  //         if (project.file) {
-  //           formData.append(`projectFile_${index}`, project.file);
-  //         }
-  //       });
-  //     }
+    // Append dropdown values
+    formData.append("type", selectedType);
+    formData.append("compIndustry", selectedIndustry);
+    formData.append("compSize", selectedCompanySize);
 
-  //     // Handle customers data if uploading now
-  //     if (customerDetailsOption === 'now' && customers.length > 0) {
-  //       const customerData = customers.map(customer => ({
-  //         custName: customer.name
-  //       }));
-  //       formData.append("compCustomers", JSON.stringify(customerData));
-  //     }
-  //   }
+    // Handle trade license
+    if (tradeLicenseFile) {
+      formData.append("compTradeLicense", tradeLicenseFile);
+    }
 
-  //   console.log("Sending FormData", formData);
-  //   console.log("All FormData", allData);
-  //   try {
-  //     const response = await dispatch(signupUser(formData)).unwrap();
-  //     if (!response.error) {
-  //       // navigate("/User-App/Login");
-  //       setCurrentStep(prev => prev + 1)
-  //     }
-  //   } catch (error) {
-  //     console.error("Registration error:", error);
-  //   }
-  // };
+    // Handle projects data if uploading now
+    if (uploadOption === 'now' && projects.length > 0) {
+      const projectData = projects.map((project, index) => ({
+        projectName: project.name,
+        projectDescription: project.description,
+        projectDate: project.completionDate,
+        projectFiles: project.file ? `projectFile_${index}` : null
+      }));
+
+      formData.append("compProject", JSON.stringify(projectData));
+
+      // Append each project file
+      projects.forEach((project, index) => {
+        if (project.file) {
+          formData.append(`projectFile_${index}`, project.file);
+        }
+      });
+    }
+
+    // Handle customers data if uploading now
+    if (customerDetailsOption === 'now' && customers.length > 0) {
+      const customerData = customers.map(customer => ({
+        custName: customer.name
+      }));
+      formData.append("compCustomers", JSON.stringify(customerData));
+    }
+  }
+
+  // For debugging - log FormData entries
+  for (let [key, value] of formData.entries()) {
+    console.log(key, value instanceof File ? value.name : value);
+  }
+
+  try {
+    const response = await dispatch(signupUser(formData)).unwrap();
+    if (!response.error) {
+      setCurrentStep(prev => prev + 1);
+    }
+  } catch (error) {
+    console.error("Registration error:", error);
+  }
+};
 
 
   const handleImageChange = (e) => {
@@ -325,6 +298,18 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
+        setUploading(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  const handleImageChange2 = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUploading(true);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage2(reader.result);
         setUploading(false);
       };
       reader.readAsDataURL(file);
@@ -590,7 +575,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                                   <div
                                     key={country.code}
                                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
-                                    onClick={() => { setSelectedCountryCode(country.dial_code); console.log("country Code", selectCountryCode) }}
+                                    // onClick={() => setValue("countryCode", country.dial_code)}
+                                    onClick={() => { setSelectedCountryCode(country.dial_code); setIsDropdownOpen(false) }}
                                   >
                                     <span className="mr-2">{country.flag}</span>
                                     <span className="mr-2 font-medium">{country.dial_code}</span>
@@ -715,7 +701,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 </button>
               </div>
             </form>
-          </div>
+          </div >
         );
       case 2:
         return (
@@ -731,7 +717,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
               </div>
 
               {/* Indicator */}
-              <StepIndicator steps={steps} currentStep={step} />
+              {/* <StepIndicator steps={steps} currentStep={step} /> */}
 
               {/* Company Logo */}
               <div className="flex items-center justify-center">
@@ -740,9 +726,9 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                     <div className="flex items-center justify-center w-full h-full">
                       <div className="loader border-t-4 border-b-4 border-blue-500 rounded-full w-10 h-10 animate-spin"></div>
                     </div>
-                  ) : image ? (
+                  ) : image2 ? (
                     <img
-                      src={image}
+                      src={image2}
                       alt="Preview"
                       className="object-cover w-full h-full"
                     />
@@ -754,7 +740,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                   <input
                     type="file"
                     accept="image/*"
-                    onChange={handleImageChange}
+                    onChange={handleImageChange2}
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                 </div>
@@ -764,8 +750,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* Company Name */}
                 <InputField
                   label="Company Name"
-                  error={errors.companyName}
-                  register={register("companyName", {
+                  error={errors.compName}
+                  register={register("compName", {
                     required: "Company name is required",
                     minLength: {
                       value: 3,
@@ -781,8 +767,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* Company Tagline */}
                 <InputField
                   label="Company Tagline"
-                  error={errors.companyTagline}
-                  register={register("companyTagline", {
+                  error={errors.compTagline}
+                  register={register("compTagline", {
                     required: "Company tagline is required",
                     minLength: {
                       value: 3,
@@ -806,7 +792,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                       <button
                         type="button"
                         onClick={countryToggleDropdown}
-                        className={`w-full px-4 py-3 border rounded-md focus:outline-none transition text-left flex items-center justify-between ${errors.companyCountryCode ? "border-red-500 focus:ring-red-200 focus:ring-2" : "border-gray-300 focus:border-[#009EB4] focus:ring-[#009EB420] focus:ring-2"
+                        className={`w-full px-4 py-3 border rounded-md focus:outline-none transition text-left flex items-center justify-between ${errors.compCountryCode ? "border-red-500 focus:ring-red-200 focus:ring-2" : "border-gray-300 focus:border-[#009EB4] focus:ring-[#009EB420] focus:ring-2"
                           }`}
                       >
                         <span>{selectedCompanyCountryCode}</span>
@@ -828,7 +814,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                       </button>
                       <input
                         type="hidden"
-                        {...register("companyCountryCode")}
+                        {...register("compCountryCode")}
                         value={selectedCompanyCountryCode}
                       />
                       {isDropdownOpen && (
@@ -848,7 +834,7 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                                 <div
                                   key={country.code}
                                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
-                                  onClick={() => { setSelectedCompanyCountryCode(country.dial_code); console.log(selectedCompanyCountryCode) }}
+                                  onClick={() => { setSelectedCompanyCountryCode(country.dial_code); setIsDropdownOpen(false) }}
                                 >
                                   <span className="mr-2">{country.flag}</span>
                                   <span className="mr-2 font-medium">{country.dial_code}</span>
@@ -864,9 +850,9 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                     </div>
                     <InputField
                       type="tel"
-                      name="companyPhone"
-                      error={errors.companyPhone}
-                      register={register("companyPhone", {
+                      name="compPhone"
+                      error={errors.compPhone}
+                      register={register("compPhone", {
                         required: "Phone number is required",
                         pattern: {
                           value: /^[0-9]{7,14}$/,
@@ -884,8 +870,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 <InputField
                   type="email"
                   label="Email Address (Optional)"
-                  error={errors.email}
-                  register={register("companyEmail", {
+                  error={errors.compEmail}
+                  register={register("compEmail", {
                     required: "Email is required",
                     pattern: {
                       value: /^\S+@\S+$/i,
@@ -898,18 +884,26 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 <InputField
                   type="date"
                   label="Founding Date"
-                  error={errors.foundingDate}
-                  register={register("foundingDate", {
+                  error={errors.compFoundingDate}
+                  register={register("compFoundingDate", {
                     required: "Founding date is required",
-                    valueAsDate: true
-                  })}
+                    valueAsDate: true,
+                    validate: (value) => {
+                      const selectedDate = new Date(value);
+                      const currentDate = new Date();
+                      return (
+                        selectedDate <= currentDate ||
+                        "Date cannot be in the future"
+                      );
+                    }
+                  },)}
                 />
 
                 {/* Address */}
                 <InputField
                   label="Address"
-                  error={errors.address}
-                  register={register("address", {
+                  error={errors.compAddress}
+                  register={register("compAddress", {
                     required: "Address is required",
                     minLength: {
                       value: 3,
@@ -925,8 +919,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* City */}
                 <InputField
                   label="City"
-                  error={errors.city}
-                  register={register("city", {
+                  error={errors.compCity}
+                  register={register("compCity", {
                     required: "City is required",
                     minLength: {
                       value: 3,
@@ -942,8 +936,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* Country */}
                 <InputField
                   label="Country"
-                  error={errors.country}
-                  register={register("country", {
+                  error={errors.compCountry}
+                  register={register("compCountry", {
                     required: "Country name is required",
                     minLength: {
                       value: 3,
@@ -959,8 +953,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* Zip Code */}
                 <InputField
                   label="Zip Code"
-                  error={errors.zipCode}
-                  register={register("zipCode", {
+                  error={errors.compPincode}
+                  register={register("compPincode", {
                     required: "Zip Code is required",
                     minLength: {
                       value: 3,
@@ -1012,8 +1006,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* IKTVA Members */}
                 <InputField
                   label="IKTVA Member"
-                  error={errors.iktvaMembers}
-                  register={register("iktvaMembers", {
+                  error={errors.compMembershipNo}
+                  register={register("compMembershipNo", {
                     required: "IKTVA Members is required",
                     minLength: {
                       value: 3,
@@ -1101,8 +1095,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* Website Link */}
                 <InputField
                   label="Website Link"
-                  error={errors.websiteLink}
-                  register={register("websiteLink", {
+                  error={errors.compLink}
+                  register={register("compLink", {
                     required: "Website Link is required",
                     minLength: {
                       value: 3,
@@ -1122,8 +1116,8 @@ const AppStepFour = ({ setCurrentStep, userIdType = "Company" }) => {
                 {/* CR */}
                 <InputField
                   label="CR Number"
-                  error={errors.cr}
-                  register={register("cr", {
+                  error={errors.compCR}
+                  register={register("compCR", {
                     required: "CR Number is required",
                     minLength: {
                       value: 3,

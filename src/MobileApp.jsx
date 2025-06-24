@@ -28,6 +28,7 @@ import AppCategories from "./webApp/appScreens/homepage/AppCategories";
 import AppNavbar from "./webApp/components/AppNavbar";
 import AppSelectProfile from "./webApp/appAuth/AppSelectProfile";
 import { useSelector } from "react-redux";
+import AppUserProfile from "./webApp/appScreens/userProfile/AppUserProfile";
 
 const Splash1 = lazy(() => import("./webApp/appAuth/AppSplash"));
 
@@ -55,7 +56,7 @@ function NoPageFound() {
   return (
     <>
       <h1>No Page Found</h1>
-      <AppNavbar />
+      {/* <AppNavbar /> */}
     </>
   )
 }
@@ -89,32 +90,35 @@ function MobileApp() {
           <Routes>
             {/* Private Routes */}
             <Route path="/" element={<Splash1 />} />
-            <Route path="/User-App/Profile-Selection" element={<AppSelectProfile />} />
-            <Route path="/User-App/SignUp" element={<AppStartSignUp />} />
+            <Route path="/User-Web/Profile-Selection" element={<AppSelectProfile />} />
+            <Route path="/User-Web/SignUp" element={<AppStartSignUp />} />
             <Route path="/Sign-Up/Process-one" element={<SignupForm />} />
-            <Route path="/User-App/Login" element={<AppLogin />} />
-            <Route path="/User-App/Forgot-Password" element={<AppForgetPassword />} />
-            <Route path="/User-App/Verify-OTP" element={<AppOtpVerification />} />
-            <Route path="/User-App/Reset-Password" element={<AppResetPassword />} />
+            <Route path="/Login" element={<AppLogin />} />
+            <Route path="/Forgot-Password" element={<AppForgetPassword />} />
+            <Route path="/Verify-OTP" element={<AppOtpVerification />} />
+            <Route path="/Reset-Password" element={<AppResetPassword />} />
+            {/* User Routes */}
+            <Route path="/profile" element={<AppUserProfile />} />
+            
             {/* Public Routes */}
             {/* Homepage */}
-            <Route path="/User-App/Homepage" element={<AppDashboard />} />
-            <Route path="/User-App/Categories" element={<AppCategories />} />
-            <Route path="/User-App/Categories/Sub-Categories" element={<AppSubCategories />} />
-            <Route path="/User-App/Products" element={<AppProductList />} />
-            <Route path="/User-App/Product-Details" element={<AppProductDetails />} />
+            <Route path="/Dashboard" element={<AppDashboard />} />
+            <Route path="/User-Web/Categories" element={<AppCategories />} />
+            <Route path="/User-Web/Categories/Sub-Categories" element={<AppSubCategories />} />
+            <Route path="/User-Web/Products" element={<AppProductList />} />
+            <Route path="/User-Web/Product-Details" element={<AppProductDetails />} />
             {/* Meeting */}
-            <Route path="/User-App/Meeting" element={<AppMeeting />} />
+            <Route path="/User-Web/Meeting" element={<AppMeeting />} />
             {/* SOW */}
-            <Route path="/User-App/Documents" element={<AppSOWManager />} />
+            <Route path="/User-Web/Documents" element={<AppSOWManager />} />
             {/* Vendor */}
-            <Route path="/User-App/Vendor-Details" element={<AppVendorDetails />} />
-            <Route path="/User-App/Chat-Interface" element={<AppChatInterface />} />
+            <Route path="/User-Web/Vendor-Details" element={<AppVendorDetails />} />
+            <Route path="/User-Web/Chat-Interface" element={<AppChatInterface />} />
             {/* Vendor Proposal */}
-            <Route path="/User-App/Evaluated-Vendors-Proposals" element={<AppVendorProposal />} />
+            <Route path="/User-Web/Evaluated-Vendors-Proposals" element={<AppVendorProposal />} />
             {/* E-Delivery Note */}
-            <Route path="/User-App/E-Delivery-Note" element={<AppEDelivery />} />
-            <Route path="/User-App/Track-Delivery-Order" element={<AppTrackOrder />} />
+            <Route path="/User-Web/E-Delivery-Note" element={<AppEDelivery />} />
+            <Route path="/User-Web/Track-Delivery-Order" element={<AppTrackOrder />} />
             <Route path="*" element={<NoPageFound />} />
           </Routes>
         </Suspense>
